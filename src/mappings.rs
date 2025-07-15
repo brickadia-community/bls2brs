@@ -654,7 +654,7 @@ lazy_static! {
             let size: u32 = captures.get(1).unwrap().as_str().parse().ok()?;
             Some(vec![BrickDesc::new("PB_DefaultBrick").size((size * 5, size * 5, size * 5))])
         },
-        r"^(?P<size>\d+)x (?:(?P<cube>Cube)|(?P<ramp>Ramp)|(?P<cornera>CornerA|CorA)|(?P<cornerb>CornerB|CorB)|(?P<cornerc>CornerC|CorC)|(?P<cornerd>CornerD|CorD)|(?P<wedge>Wedge))(?:(?P<steep> Steep)|(?P<three_quarters> 3/4h)|(?P<half> 1/2h)|(?P<quarter> 1/4h)| )?(?P<inv> Inv.)?$" => |captures, _| {
+        r"^\s?(?P<size>\d+)x (?:(?P<cube>Cube)|(?P<ramp>Ramp)|(?P<cornera>CornerA|CorA)|(?P<cornerb>CornerB|CorB)|(?P<cornerc>CornerC|CorC)|(?P<cornerd>CornerD|CorD)|(?P<wedge>Wedge))(?:(?P<steep> Steep)|(?P<three_quarters> 3/4h)|(?P<half> 1/2h)|(?P<quarter> 1/4h)| )?(?P<inv> Inv.)?$" => |captures, _| {
             let size: u32 = captures.name("size").unwrap().as_str().parse().ok()?;
             let height = if captures.name("steep").is_some() {
                 size * 2 * 5
@@ -667,28 +667,24 @@ lazy_static! {
             } else {
                 size * 5
             };
-            let (asset, mut rotation, use_offset, mw) = if captures.name("cube").is_some() {
-                ("PB_DefaultMicroBrick", 1, false, false)
+            let (asset, mut rotation, mw) = if captures.name("cube").is_some() {
+                ("PB_DefaultMicroBrick", 1, false)
             } else if captures.name("wedge").is_some() {
-                ("PB_DefaultMicroWedge", 2, false, false)
+                ("PB_DefaultMicroWedge", 2, false)
             } else if captures.name("ramp").is_some() {
-                ("PB_DefaultMicroWedge", 3, false, true)
+                ("PB_DefaultMicroWedge", 3, true)
             } else if captures.name("cornera").is_some() {
-                ("PB_DefaultMicroWedgeTriangleCorner", 2, false, false)
+                ("PB_DefaultMicroWedgeTriangleCorner", 2, false)
             } else if captures.name("cornerb").is_some() {
-                ("PB_DefaultMicroWedgeOuterCorner", 2, false, false)
+                ("PB_DefaultMicroWedgeOuterCorner", 2, false)
             } else if captures.name("cornerc").is_some() {
-                ("PB_DefaultMicroWedgeCorner", 2, false, false)
+                ("PB_DefaultMicroWedgeCorner", 2, false)
             } else if captures.name("cornerd").is_some() {
-                ("PB_DefaultMicroWedgeInnerCorner", 2, false, false)
+                ("PB_DefaultMicroWedgeInnerCorner", 2, false)
             } else {
                 unreachable!()
             };
-            let offset = if use_offset {
-                (0, (size * 10) as i32, 0)
-            } else {
-                (0, 0, 0)
-            };
+            let offset = (0, 0, 0);
             let (direction, imr) = if captures.name("inv").is_some() {
                 if captures.name("ramp").is_some() {
                     rotation += 2;
