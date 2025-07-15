@@ -659,10 +659,7 @@ lazy_static! {
             let height = if captures.name("steep").is_some() {
                 size * 2 * 5
             } else if captures.name("three_quarters").is_some() {
-                match size {
-                    8 => 5 * 6,
-                    _ => return None
-                }
+                size * 5 * 3 / 4
             } else if captures.name("half").is_some() {
                 size / 2 * 5
             } else if captures.name("quarter").is_some() {
