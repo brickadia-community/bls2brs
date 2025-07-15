@@ -133,6 +133,17 @@ lazy_static! {
             BrickDesc::new("PB_DefaultPole").size((2, 2, 8)).offset((-15, 0, 2)),
         ],
 
+        "2x2x5 Lattice" => vec![
+            // Caps
+            BrickDesc::new("PB_DefaultMicroBrick").size((10, 10, 2)).offset((0, 0, -28)),
+            BrickDesc::new("PB_DefaultMicroBrick").size((10, 10, 2)).offset((0, 0, 28)),
+            // Corners
+            BrickDesc::new("PB_DefaultMicroBrick").size((1, 1, 26)).offset((9, 9, 0)),
+            BrickDesc::new("PB_DefaultMicroBrick").size((1, 1, 26)).offset((9, -9, 0)),
+            BrickDesc::new("PB_DefaultMicroBrick").size((1, 1, 26)).offset((-9, 9, 0)),
+            BrickDesc::new("PB_DefaultMicroBrick").size((1, 1, 26)).offset((-9, -9, 0)),
+        ],
+
         "Treasure Chest" => vec![
             // Body
             BrickDesc::new("PB_DefaultMicroBrick").size((20, 10, 2)).offset((0, 0, -8)),
