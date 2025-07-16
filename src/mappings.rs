@@ -752,7 +752,8 @@ lazy_static! {
                 .rotation_offset(rotation)
                 .microwedge_rotate(mw)
                 .inverted_modter_rotate(imr)
-                .direction_override(direction)])
+                .direction_override(direction)
+                .non_priority(true)])
         },
         r"(\d+)x(\d+)x?(?P<height>\d+)? Arch(?P<up> Up)?" => |captures, _| {
             let width: u32 = captures.get(1).unwrap().as_str().parse().ok()?;
