@@ -543,6 +543,20 @@ lazy_static! {
             BrickDesc::new("PB_DefaultPole").size((4, 4, 1)).offset((0, 0, -17)),
             BrickDesc::new("PB_DefaultPole").size((5, 5, 17)).offset((0, 0, 1)),
         ],
+        // Brick_BlockPoles
+        "Block Pole 1x1F" => BrickDesc::new("PB_DefaultMicroBrick").size((2, 2, 2)),
+        "Block Pole 1x1" => BrickDesc::new("PB_DefaultMicroBrick").size((2, 2, 6)),
+        "Block Pole Horiz" => BrickDesc::new("PB_DefaultMicroBrick").size((5, 2, 2)),
+        "Block Pole C" => vec![
+            BrickDesc::new("PB_DefaultMicroBrick").size((2, 2, 2)).offset((0, 0, -2)),
+            BrickDesc::new("PB_DefaultMicroBrick").size((2, 2, 2)).offset((0, 3, 2)),
+            BrickDesc::new("PB_DefaultMicroWedge").size((1, 2, 1)).offset((0, 0, 1)).microwedge_rotate(true).rotation_offset(3),
+        ],
+        "Block Pole C Inv" => vec![
+            BrickDesc::new("PB_DefaultMicroBrick").size((2, 2, 2)).offset((0, 0, 2)),
+            BrickDesc::new("PB_DefaultMicroBrick").size((2, 2, 2)).offset((0, -3, -2)),
+            BrickDesc::new("PB_DefaultMicroWedge").size((1, 2, 1)).offset((0, 0, -1)).microwedge_rotate(true).rotation_offset(3).inverted_wedge_rotate(true).inverted_modter_rotate(true),
+        ],
     ];
 
     pub static ref BRICK_MAP_REGEX: Vec<(Regex, RegexHandler)> = brick_map_regex![
