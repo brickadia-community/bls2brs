@@ -559,6 +559,15 @@ lazy_static! {
         "1x2F Vertical Print" => BrickDesc::new("PB_DefaultMicroBrick").size((5, 2, 10)).offset((3, 0, 0)),
         "2x2F Vertical Print" => BrickDesc::new("PB_DefaultMicroBrick").size((10, 2, 10)).offset((3, 0, 0)),
         "2x2F Vertical Double Print" => BrickDesc::new("PB_DefaultMicroBrick").size((10, 2, 10)).offset((3, 0, 0)),
+        // Brick_MoreRounds
+        "1x1x2 Round" => vec![
+            BrickDesc::new("PB_DefaultPole").size((4, 4, 1)).offset((0, 0, -11)),
+            BrickDesc::new("PB_DefaultPole").size((5, 5, 11)).offset((0, 0, 1)),
+        ],
+        "1x1x3 Round" => vec![
+            BrickDesc::new("PB_DefaultPole").size((4, 4, 1)).offset((0, 0, -17)),
+            BrickDesc::new("PB_DefaultPole").size((5, 5, 17)).offset((0, 0, 1)),
+        ],
     ];
 
     pub static ref BRICK_MAP_REGEX: Vec<(Regex, RegexHandler)> = brick_map_regex![
