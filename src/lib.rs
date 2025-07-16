@@ -92,6 +92,7 @@ pub fn convert(reader: bl_save::Reader<impl BufRead>) -> io::Result<ConvertRepor
             microwedge_rotate,
             inverted_modter_rotate,
             inverted_wedge_rotate,
+            modter
         } in mappings
         {
             let asset_name_index = converter.asset(asset);
@@ -163,7 +164,7 @@ pub fn convert(reader: bl_save::Reader<impl BufRead>) -> io::Result<ConvertRepor
                 owner_index: BRICK_OWNER as u32,
             };
 
-            if non_priority {
+            if non_priority || (modter && !brick.visibility) {
                 non_prio.push(brick);
             } else {
                 converter.write_data.bricks.push(brick);

@@ -12,6 +12,7 @@ pub struct BrickDesc {
     pub microwedge_rotate: bool,
     pub inverted_modter_rotate: bool,
     pub inverted_wedge_rotate: bool,
+    pub modter: bool,
 }
 
 impl BrickDesc {
@@ -27,6 +28,7 @@ impl BrickDesc {
             microwedge_rotate: false,
             inverted_modter_rotate: false,
             inverted_wedge_rotate: false,
+            modter: false,
         }
     }
 
@@ -72,6 +74,11 @@ impl BrickDesc {
 
     pub fn inverted_wedge_rotate(mut self, inverted_wedge_rotate: bool) -> Self {
         self.inverted_wedge_rotate = inverted_wedge_rotate;
+        self
+    }
+
+    pub fn modter(mut self, modter: bool) -> Self {
+        self.modter = modter;
         self
     }
 }
