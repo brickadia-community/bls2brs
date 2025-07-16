@@ -536,6 +536,29 @@ lazy_static! {
             BrickDesc::new("PB_DefaultMicroWedge").size((15, 1, 15)).offset((0, 10, 1)).microwedge_rotate(true),
             BrickDesc::new("PB_DefaultMicroBrick").size((10, 5, 1)).offset((0, -15, 17)),
         ],
+        // Brick_VerticalPlatePack
+        "1F 1x1F Vertical Print" => BrickDesc::new("PB_DefaultMicroBrick").size((2, 2, 2)).offset((3, 3, 0)),
+        "1x 1x1F Vertical Edge Print" => BrickDesc::new("PB_DefaultMicroBrick").size((2, 2, 6)).offset((3, 3, 0)),
+        "1x1F Vertical Edge Print" => BrickDesc::new("PB_DefaultMicroBrick").size((2, 2, 10)).offset((3, 3, 0)),
+        "1F 1x2F Vertical Print" => BrickDesc::new("PB_DefaultMicroBrick").size((5, 2, 2)).offset((3, 0, 0)),
+        "1F 2x2F Vertical Print" => BrickDesc::new("PB_DefaultMicroBrick").size((10, 2, 2)).offset((3, 0, 0)),
+        "1F 1x1F Vertical Corner Print" => vec![
+            BrickDesc::new("PB_DefaultMicroBrick").size((5, 2, 2)).offset((3, 0, 0)),
+            BrickDesc::new("PB_DefaultMicroBrick").size((2, 3, 2)).offset((-2, -3, 0)),
+        ],
+        "1x 1x1F Vertical Corner Print" => vec![
+            BrickDesc::new("PB_DefaultMicroBrick").size((5, 2, 6)).offset((3, 0, 0)),
+            BrickDesc::new("PB_DefaultMicroBrick").size((2, 3, 6)).offset((-2, -3, 0)),
+        ],
+        "1x1F Vertical Corner Print" => vec![
+            BrickDesc::new("PB_DefaultMicroBrick").size((5, 2, 10)).offset((3, 0, 0)),
+            BrickDesc::new("PB_DefaultMicroBrick").size((2, 3, 10)).offset((-2, -3, 0)),
+        ],
+        "1x 1x2F Vertical Print" => BrickDesc::new("PB_DefaultMicroBrick").size((5, 2, 6)).offset((3, 0, 0)),
+        "1x 2x2F Vertical Print" => BrickDesc::new("PB_DefaultMicroBrick").size((10, 2, 6)).offset((3, 0, 0)),
+        "1x2F Vertical Print" => BrickDesc::new("PB_DefaultMicroBrick").size((5, 2, 10)).offset((3, 0, 0)),
+        "2x2F Vertical Print" => BrickDesc::new("PB_DefaultMicroBrick").size((10, 2, 10)).offset((3, 0, 0)),
+        "2x2F Vertical Double Print" => BrickDesc::new("PB_DefaultMicroBrick").size((10, 2, 10)).offset((3, 0, 0)),
     ];
 
     pub static ref BRICK_MAP_REGEX: Vec<(Regex, RegexHandler)> = brick_map_regex![
