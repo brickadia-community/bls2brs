@@ -661,9 +661,15 @@ lazy_static! {
             let length: u32 = captures.get(2).unwrap().as_str().parse().ok()?;
             Some(vec![BrickDesc::new("PB_DefaultBrick").size((width * 5, length * 5, 2))])
         },
-        r"^(\d+)x Cube$" => |captures, _| {
+        r"^(\d+)x Cube(?: (\d+)H)?$" => |captures, _| {
             let size: u32 = captures.get(1).unwrap().as_str().parse().ok()?;
-            Some(vec![BrickDesc::new("PB_DefaultBrick").size((size * 5, size * 5, size * 5))])
+            let extension: Option<u32> = captures.get(2).map(|m| m.as_str().parse().ok()).flatten();
+            let height = if let Some(n) = extension {
+                size * n * 5
+            } else {
+                size * 5
+            };
+            Some(vec![BrickDesc::new("PB_DefaultBrick").size((size * 5, size * 5, height))])
         },
         r"^\s?(?P<size>\d+)x (?:(?P<cube>Cube)|(?P<ramp>Ramp)|(?P<cornera>CornerA|CorA)|(?P<cornerb>CornerB|CorB)|(?P<cornerc>CornerC|CorC)|(?P<cornerd>CornerD|CorD)|(?P<wedge>Wedge))(?:(?P<steep> Steep)|(?P<three_quarters> 3/4h)|(?P<half> 1/2h)|(?P<quarter> 1/4h)| )?(?P<inv> Inv.)?$" => |captures, _| {
             let size: u32 = captures.name("size").unwrap().as_str().parse().ok()?;
