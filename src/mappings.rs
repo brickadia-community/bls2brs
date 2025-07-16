@@ -797,5 +797,29 @@ lazy_static! {
                     .rotation_offset(0).direction_override(dir).inverted_wedge_rotate(iwr),
             ])
         },
+        // Log Bricks Addon
+        r"^1x(\d) Log( Wall)?" => |captures, _| {
+            let width: i32 = captures.get(1).unwrap().as_str().parse().ok()?;
+            let wall = captures.get(2).is_some();
+
+            let width_start = (width - 1) * 5;
+            let mut v = vec![];
+            for i in 0..width {
+                let x = i * 10 - width_start;
+
+                if wall {
+                    for j in 0..6 {
+                        let z = j * 10 - 25;
+                        v.push(BrickDesc::new("B_1x_Octo").offset((x, 0, z)));
+                    }
+                } else {
+                    v.push(BrickDesc::new("B_1x1F_Octo").offset((x, 0, -4)));
+                    v.push(BrickDesc::new("B_1x1F_Octo").offset((x, 0, 0)));
+                    v.push(BrickDesc::new("B_1x1F_Octo").offset((x, 0, 4)));
+                }
+            }
+
+            Some(v)
+        }
     ];
 }
