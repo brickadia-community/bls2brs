@@ -557,6 +557,15 @@ lazy_static! {
             BrickDesc::new("PB_DefaultMicroBrick").size((2, 2, 2)).offset((0, -3, -2)),
             BrickDesc::new("PB_DefaultMicroWedge").size((1, 2, 1)).offset((0, 0, -1)).microwedge_rotate(true).rotation_offset(3).inverted_wedge_rotate(true).inverted_modter_rotate(true),
         ],
+        // Brick_TilePlates
+        "1x1F Corner Tile" => vec![
+            BrickDesc::new("PB_DefaultSmoothTile").size((10, 5, 2)).offset((5, 0, 0)),
+            BrickDesc::new("PB_DefaultSmoothTile").size((5, 5, 2)).offset((-5, -5, 0)),
+        ],
+        "2x2F Corner Tile" => vec![
+            BrickDesc::new("PB_DefaultTile").size((20, 10, 2)).offset((10, 0, 0)),
+            BrickDesc::new("PB_DefaultTile").size((10, 10, 2)).offset((-10, -10, 0)),
+        ],
     ];
 
     pub static ref BRICK_MAP_REGEX: Vec<(Regex, RegexHandler)> = brick_map_regex![
