@@ -767,9 +767,11 @@ lazy_static! {
             };
             let up = captures.name("up").is_some();
             let direction = if up { ZNegative } else { ZPositive };
+            let rotation = if length > 8 {2} else {1};
             Some(vec![BrickDesc::new("PB_DefaultArch")
                 .size((width * 5, length * 5, height * 6))
                 .direction_override(direction)
+                .rotation_offset(rotation)
             ])
         },
         // 1RandomPack Panels
