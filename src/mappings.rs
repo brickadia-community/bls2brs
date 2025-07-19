@@ -566,6 +566,27 @@ lazy_static! {
             BrickDesc::new("PB_DefaultTile").size((20, 10, 2)).offset((10, 0, 0)),
             BrickDesc::new("PB_DefaultTile").size((10, 10, 2)).offset((-10, -10, 0)),
         ],
+         // Brick_Wedge
+        "3x3 Wedge" => vec![
+            BrickDesc::new("PB_DefaultSideWedge").size((15, 15, 6)).rotation_offset(3),
+            BrickDesc::new("PB_DefaultSideWedge").size((5, 5, 6)).rotation_offset(1).offset((10, 10, 0)),
+            BrickDesc::new("PB_DefaultSideWedge").size((5, 5, 6)).rotation_offset(1).offset((-10, -10, 0)),
+            BrickDesc::new("PB_DefaultSideWedge").size((5, 5, 6)).rotation_offset(1).offset((0, 0, 0)),
+            BrickDesc::new("PB_DefaultSideWedgeTile").size((5, 5, 6)).rotation_offset(3).offset((10, 0, 0)),
+            BrickDesc::new("PB_DefaultSideWedgeTile").size((5, 5, 6)).rotation_offset(3).offset((0, -10, 0)),
+        ],
+        "3x3x5 Wedge" => vec![
+            BrickDesc::new("PB_DefaultSideWedge").size((15, 15, 30)).rotation_offset(0),
+            BrickDesc::new("PB_DefaultSideWedge").size((5, 5, 30)).rotation_offset(2).offset((-10, 10, 0)),
+            BrickDesc::new("PB_DefaultSideWedge").size((5, 5, 30)).rotation_offset(2).offset((10, -10, 0)),
+            BrickDesc::new("PB_DefaultSideWedge").size((5, 5, 30)).rotation_offset(2).offset((0, 0, 0)),
+            BrickDesc::new("PB_DefaultSideWedgeTile").size((5, 5, 30)).rotation_offset(0).offset((10, 0, 0)),
+            BrickDesc::new("PB_DefaultSideWedgeTile").size((5, 5, 30)).rotation_offset(0).offset((0, 10, 0)),
+        ],
+        // Brick_WedgePlus
+        "1x1 Wedge" => BrickDesc::new("PB_DefaultSideWedge").size((5, 5, 6)).rotation_offset(0),
+        "1x1F Wedge" => BrickDesc::new("PB_DefaultSideWedge").size((5, 5, 2)).rotation_offset(0),
+        "1x1x5 Wedge" => BrickDesc::new("PB_DefaultSideWedge").size((5, 5, 30)).rotation_offset(0),
     ];
 
     pub static ref BRICK_MAP_REGEX: Vec<(Regex, RegexHandler)> = brick_map_regex![
