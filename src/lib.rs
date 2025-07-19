@@ -92,7 +92,8 @@ pub fn convert(reader: bl_save::Reader<impl BufRead>) -> io::Result<ConvertRepor
             microwedge_rotate,
             inverted_modter_rotate,
             inverted_wedge_rotate,
-            modter
+            modter,
+            lattice_rotate
         } in mappings
         {
             let asset_name_index = converter.asset(asset);
@@ -142,6 +143,16 @@ pub fn convert(reader: bl_save::Reader<impl BufRead>) -> io::Result<ConvertRepor
                 }
                 if original_dir.is_some() && original_dir.unwrap() == brs::Direction::ZNegative {
                     rotation = (rotation + 2) % 4;
+                }
+            }
+
+            if lattice_rotate {
+                if rotation == 0 || rotation == 2 {
+                    direction_override = Some(brs::Direction::YPositive);
+                    let (x, y, z) = size;
+                    size = (y, x, z);
+                } else {
+                    direction_override = Some(brs::Direction::XPositive);
                 }
             }
 

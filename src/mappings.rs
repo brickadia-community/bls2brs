@@ -95,7 +95,18 @@ lazy_static! {
         "2x2 Disc" => BrickDesc::new("B_2x2F_Round"),
         "2x2 disc Inv" => BrickDesc::new("B_2x2F_Round"), // 1RBP
         "Music Brick" => BrickDesc::new("PB_DefaultBrick").size((5, 5, 6)),
-        "1x4x2 Fence" => BrickDesc::new("PB_DefaultBrick").size((5, 4*5, 2*6)).rotation_offset(0),
+        "1x4x2 Fence" => vec![
+            BrickDesc::new("PB_DefaultMicroBrick").size((5, 20, 2)).rotation_offset(0).offset((0, 0, -10)),
+            BrickDesc::new("BP_LatticeThin").size((20, 10, 1)).lattice_rotate(true).rotation_offset(1).offset((0, 0, 2)),
+        ],
+        "1x8 Country Fence" => vec![
+            BrickDesc::new("PB_DefaultMicroBrick").size((5, 5, 2)).offset((25, 0, -14)),
+            BrickDesc::new("PB_DefaultMicroBrick").size((5, 5, 2)).offset((-25, 0, -14)),
+            BrickDesc::new("PB_DefaultMicroBrick").size((3, 3, 14)).offset((25, 0, 2)),
+            BrickDesc::new("PB_DefaultMicroBrick").size((3, 3, 14)).offset((-25, 0, 2)),
+            BrickDesc::new("PB_DefaultMicroBrick").size((1, 40, 4)).offset((0, -4, -2)),
+            BrickDesc::new("PB_DefaultMicroBrick").size((1, 40, 4)).offset((0, -4, 12)),
+        ],
         "2x2x1 Octo Cone" => BrickDesc::new("B_2x2_Round"),
         "Gravestone" => BrickDesc::new("B_Gravestone"),
         "House Door" => GENERIC_DOOR.clone(),
@@ -557,6 +568,11 @@ lazy_static! {
             BrickDesc::new("PB_DefaultMicroBrick").size((2, 2, 2)).offset((0, -3, -2)),
             BrickDesc::new("PB_DefaultMicroWedge").size((1, 2, 1)).offset((0, 0, -1)).microwedge_rotate(true).rotation_offset(3).inverted_wedge_rotate(true).inverted_modter_rotate(true),
         ],
+        "Block Pole Horiz C" => vec![
+            BrickDesc::new("PB_DefaultMicroBrick").size((2, 2, 2)).offset((0, -3, 0)),
+            BrickDesc::new("PB_DefaultMicroBrick").size((2, 1, 2)).offset((4, 0, 0)),
+            BrickDesc::new("PB_DefaultMicroWedge").size((1, 2, 2)).offset((1, 0, 0)).rotation_offset(1),
+        ],
         // Brick_TilePlates
         "1x1F Corner Tile" => vec![
             BrickDesc::new("PB_DefaultSmoothTile").size((10, 5, 2)).offset((5, 0, 0)),
@@ -596,6 +612,91 @@ lazy_static! {
         "1x1 Thick Pole" => BrickDesc::new("PB_DefaultPole").size((4, 4, 6)),
         "1x2 Thick Pole" => BrickDesc::new("PB_DefaultPole").size((4, 4, 18)),
         "1x3 Thick Pole" => BrickDesc::new("PB_DefaultPole").size((4, 4, 18)),
+        // Brick_Window
+        "1x1x1 Window" => vec![
+            BrickDesc::new("PB_DefaultMicroBrick").size((5, 5, 2)).offset((0, 0, -4)),
+            BrickDesc::new("PB_DefaultMicroBrick").size((5, 5, 1)).offset((0, 0, 5)),
+            BrickDesc::new("PB_DefaultMicroBrick").size((1, 5, 3)).offset((0, 4, 1)),
+            BrickDesc::new("PB_DefaultMicroBrick").size((1, 5, 3)).offset((0, -4, 1)),
+        ],
+        // Brick_SmallRamps
+        "1x1 Small Ramp" => vec![
+            BrickDesc::new("PB_DefaultMicroBrick").size((5, 5, 2)).offset((0, 0, -2)),
+            BrickDesc::new("PB_DefaultMicroWedge").size((5, 5, 2)).offset((0, 0, 2)).microwedge_rotate(true).rotation_offset(3),
+        ],
+        "1x1 Inverted Ramp" => vec![
+            BrickDesc::new("PB_DefaultMicroBrick").size((5, 5, 2)).offset((0, 0, 2)),
+            BrickDesc::new("PB_DefaultMicroWedge").size((5, 5, 2)).offset((0, 0, -2)).microwedge_rotate(true).rotation_offset(1).inverted_wedge_rotate(true).inverted_modter_rotate(true),
+        ],
+        "1x2 Vertical BOTTOM Ramp" => vec![
+            BrickDesc::new("PB_DefaultMicroBrick").size((5, 2, 10)).offset((3, 0, 0)),
+            BrickDesc::new("PB_DefaultMicroWedge").size((3, 5, 10)).offset((-2, 0, 0)).microwedge_rotate(true).rotation_offset(2),
+        ],
+        "2x2 Vertical BOTTOM Ramp" => vec![
+            BrickDesc::new("PB_DefaultMicroBrick").size((10, 2, 10)).offset((3, 0, 0)),
+            BrickDesc::new("PB_DefaultMicroWedge").size((3, 10, 10)).offset((-2, 0, 0)).microwedge_rotate(true).rotation_offset(2),
+        ],
+        "1x1 Vertical BOTTOM Ramp" => vec![
+            BrickDesc::new("PB_DefaultMicroBrick").size((5, 2, 6)).offset((3, 0, 0)),
+            BrickDesc::new("PB_DefaultMicroWedge").size((3, 5, 6)).offset((-2, 0, 0)).microwedge_rotate(true).rotation_offset(2),
+        ],
+        // Brick_ExtraArches
+        "1x5 Half-Arch" => vec![
+            BrickDesc::new("PB_DefaultBrick").size((5, 5, 12)).offset((0, 20, -12)),
+            BrickDesc::new("PB_DefaultBrick").size((15, 5, 2)).offset((0, -10, 18)),
+            BrickDesc::new("PB_DefaultBrick").size((5, 5, 2)).offset((0, 0, 22)),
+            BrickDesc::new("PB_DefaultMicroWedge").size((2, 5, 8)).offset((0, 13, -16)).microwedge_rotate(true).rotation_offset(1).inverted_wedge_rotate(true).inverted_modter_rotate(true),
+            BrickDesc::new("PB_DefaultMicroWedge").size((4, 5, 6)).offset((0, 7, -2)).microwedge_rotate(true).rotation_offset(1).inverted_wedge_rotate(true).inverted_modter_rotate(true),
+            BrickDesc::new("PB_DefaultMicroBrick").size((2, 5, 6)).offset((0, 13, -2)),
+            BrickDesc::new("PB_DefaultMicroWedge").size((6, 5, 4)).offset((0, -3, 8)).microwedge_rotate(true).rotation_offset(1).inverted_wedge_rotate(true).inverted_modter_rotate(true),
+            BrickDesc::new("PB_DefaultMicroBrick").size((6, 5, 4)).offset((0, 9, 8)),
+            BrickDesc::new("PB_DefaultMicroWedge").size((8, 5, 2)).offset((0, -17, 14)).microwedge_rotate(true).rotation_offset(1).inverted_wedge_rotate(true).inverted_modter_rotate(true),
+            BrickDesc::new("PB_DefaultMicroBrick").size((7, 5, 2)).offset((0, -2, 14)),
+        ],
+        "1x12 Arch" => vec![
+            BrickDesc::new("PB_DefaultBrick").size((40, 5, 4)).offset((0, -0, 14)),
+            BrickDesc::new("PB_DefaultBrick").size((5, 5, 6)).offset((0, 55, -12)),
+            BrickDesc::new("PB_DefaultBrick").size((5, 5, 6)).offset((0, -55, -12)),
+            BrickDesc::new("PB_DefaultBrick").size((5, 5, 6)).offset((0, 45, 0)),
+            BrickDesc::new("PB_DefaultBrick").size((5, 5, 6)).offset((0, -45, 0)),
+            BrickDesc::new("PB_DefaultMicroWedge").size((5, 5, 6)).offset((0, 45, -12)).microwedge_rotate(true).rotation_offset(1).inverted_wedge_rotate(true).inverted_modter_rotate(true),
+            BrickDesc::new("PB_DefaultMicroWedge").size((5, 5, 6)).offset((0, -45, -12)).microwedge_rotate(true).rotation_offset(3).inverted_wedge_rotate(true).inverted_modter_rotate(true),
+            BrickDesc::new("PB_DefaultMicroWedge").size((4, 5, 3)).offset((0, 36, -3)).microwedge_rotate(true).rotation_offset(1).inverted_wedge_rotate(true).inverted_modter_rotate(true),
+            BrickDesc::new("PB_DefaultMicroWedge").size((4, 5, 3)).offset((0, -36, -3)).microwedge_rotate(true).rotation_offset(3).inverted_wedge_rotate(true).inverted_modter_rotate(true),
+            BrickDesc::new("PB_DefaultMicroBrick").size((4, 5, 3)).offset((0, 36, 3)),
+            BrickDesc::new("PB_DefaultMicroBrick").size((4, 5, 3)).offset((0, -36, 3)),
+            BrickDesc::new("PB_DefaultMicroWedge").size((5, 5, 3)).offset((0, 27, 3)).microwedge_rotate(true).rotation_offset(1).inverted_wedge_rotate(true).inverted_modter_rotate(true),
+            BrickDesc::new("PB_DefaultMicroWedge").size((5, 5, 3)).offset((0, -27, 3)).microwedge_rotate(true).rotation_offset(3).inverted_wedge_rotate(true).inverted_modter_rotate(true),
+            BrickDesc::new("PB_DefaultMicroBrick").size((9, 5, 2)).offset((0, 31, 8)),
+            BrickDesc::new("PB_DefaultMicroBrick").size((9, 5, 2)).offset((0, -31, 8)),
+            BrickDesc::new("PB_DefaultMicroWedge").size((5, 5, 1)).offset((0, 17, 7)).microwedge_rotate(true).rotation_offset(1).inverted_wedge_rotate(true).inverted_modter_rotate(true),
+            BrickDesc::new("PB_DefaultMicroWedge").size((5, 5, 1)).offset((0, -17, 7)).microwedge_rotate(true).rotation_offset(3).inverted_wedge_rotate(true).inverted_modter_rotate(true),
+            BrickDesc::new("PB_DefaultMicroBrick").size((5, 5, 1)).offset((0, 17, 9)),
+            BrickDesc::new("PB_DefaultMicroBrick").size((5, 5, 1)).offset((0, -17, 9)),
+            BrickDesc::new("PB_DefaultMicroWedge").size((6, 5, 1)).offset((0, 6, 9)).microwedge_rotate(true).rotation_offset(1).inverted_wedge_rotate(true).inverted_modter_rotate(true),
+            BrickDesc::new("PB_DefaultMicroWedge").size((6, 5, 1)).offset((0, -6, 9)).microwedge_rotate(true).rotation_offset(3).inverted_wedge_rotate(true).inverted_modter_rotate(true),
+        ],
+        "1x3 Arabian Arch" => vec![
+            BrickDesc::new("PB_DefaultBrick").size((5, 5, 6)).offset((0, 10, -6)),
+            BrickDesc::new("PB_DefaultBrick").size((10, 5, 2)).offset((0, -5, 10)),
+            BrickDesc::new("PB_DefaultMicroWedge").size((8, 5, 4)).offset((0, -7, 4)).microwedge_rotate(true).rotation_offset(1).inverted_wedge_rotate(true).inverted_modter_rotate(true),
+            BrickDesc::new("PB_DefaultMicroBrick").size((2, 5, 4)).offset((0, 3, 4)),
+            BrickDesc::new("PB_DefaultMicroWedge").size((2, 5, 3)).offset((0, 3, -3)).microwedge_rotate(true).rotation_offset(1).inverted_wedge_rotate(true).inverted_modter_rotate(true),
+        ],
+        // Sylvanor Tree Approximations
+        "Tree Base 2" => BrickDesc::new("PB_DefaultBrick").size((10, 10, 44)).offset((0, 0, -50)),
+        "Tree Grouped" => vec![
+            BrickDesc::new("PB_DefaultBrick").size((20, 20, 50)),
+            BrickDesc::new("PB_DefaultBrick").size((25, 25, 26)).offset((0, 0, -76)).non_priority(true),
+        ],
+        "Tree Wedge" => vec![
+            BrickDesc::new("PB_DefaultBrick").size((20, 20, 50)),
+            BrickDesc::new("PB_DefaultBrick").size((25, 25, 26)).offset((0, 0, -76)).non_priority(true),
+        ],
+        "Tree Marshmallow" => vec![
+            BrickDesc::new("PB_DefaultBrick").size((15, 15, 50)),
+            BrickDesc::new("PB_DefaultBrick").size((20, 20, 26)).offset((0, 0, -76)).non_priority(true),
+        ],
     ];
 
     pub static ref BRICK_MAP_REGEX: Vec<(Regex, RegexHandler)> = brick_map_regex![
@@ -634,7 +735,7 @@ lazy_static! {
         },
 
         // TODO: Remove (?: Print)? when prints exist
-        r"^(-)?(25|45|65|72|80)° ?(Inv )?Ramp(?: (\d+)x)?( Corner)?(?: Print)?$" => |captures, _| {
+        r"^(-)?(18|25|45|65|72|80)° ?(Inv )?Ramp(?: (\d+)x)?( Corner)?(?: Print)?$" => |captures, _| {
             let neg = captures.get(1).is_some();
             let inv = captures.get(3).is_some();
             let corner = captures.get(5).is_some();
@@ -661,7 +762,9 @@ lazy_static! {
 
             let degree_str = captures.get(2).unwrap().as_str();
 
-            let (x, z) = if degree_str == "25" {
+            let (x, z) = if degree_str == "18" {
+                (20, 6)
+            } else if degree_str == "25" {
                 (15, 6)
             } else if degree_str == "45" {
                 (10, 6)
@@ -686,7 +789,9 @@ lazy_static! {
                 y = length * 5;
             }
 
-            Some(vec![BrickDesc::new(asset).size((x, y, z)).rotation_offset(0)])
+            let rotation = if corner && inv { 1 } else { 0 };
+
+            Some(vec![BrickDesc::new(asset).size((x, y, z)).rotation_offset(rotation)])
         },
 
         r"(?P<angle>25|45)° Crest (?:(?P<end>End)|(?P<corner>Corner)|(?P<length>\d+)x)" => |captures, _| {
@@ -786,6 +891,7 @@ lazy_static! {
         r"(\d+)x(\d+)x?(?P<height>\d+)? Arch(?P<up> Up)?" => |captures, _| {
             let width: u32 = captures.get(1).unwrap().as_str().parse().ok()?;
             let length: u32 = captures.get(2).unwrap().as_str().parse().ok()?;
+
             let height: u32 = if captures.name("height").is_some() {
                 captures.name("height").unwrap().as_str().parse().ok()?
             } else {
