@@ -587,6 +587,15 @@ lazy_static! {
         "1x1 Wedge" => BrickDesc::new("PB_DefaultSideWedge").size((5, 5, 6)).rotation_offset(0),
         "1x1F Wedge" => BrickDesc::new("PB_DefaultSideWedge").size((5, 5, 2)).rotation_offset(0),
         "1x1x5 Wedge" => BrickDesc::new("PB_DefaultSideWedge").size((5, 5, 30)).rotation_offset(0),
+        // Brick_Pole
+        "1x1F Pole" => BrickDesc::new("PB_DefaultPole").size((2, 2, 2)),
+        "1x1 Pole" => BrickDesc::new("PB_DefaultPole").size((2, 2, 6)),
+        "1x1x3 Pole" => BrickDesc::new("PB_DefaultPole").size((2, 2, 18)),
+        // Brick_ThickPoles
+        "1x1f Thick Pole" => BrickDesc::new("PB_DefaultPole").size((4, 4, 2)),
+        "1x1 Thick Pole" => BrickDesc::new("PB_DefaultPole").size((4, 4, 6)),
+        "1x2 Thick Pole" => BrickDesc::new("PB_DefaultPole").size((4, 4, 18)),
+        "1x3 Thick Pole" => BrickDesc::new("PB_DefaultPole").size((4, 4, 18)),
     ];
 
     pub static ref BRICK_MAP_REGEX: Vec<(Regex, RegexHandler)> = brick_map_regex![
