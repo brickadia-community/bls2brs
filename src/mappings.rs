@@ -1118,7 +1118,7 @@ lazy_static! {
             let (asset, x, y, rotation) = if captures.name("end").is_some() {
                 ("PB_DefaultRampCrestEnd", 10, 5, 2)
             } else if captures.name("corner").is_some() {
-                ("PB_DefaultRampCrestCorner", 10, 10, 0)
+                ("PB_DefaultRampCrestCorner", 10, 10, 2)
             } else {
                 let length: u32 = captures.name("length").unwrap().as_str().parse().ok()?;
                 ("PB_DefaultRampCrest", 10, length * 5, 0)
