@@ -129,7 +129,7 @@ lazy_static! {
         ],
 
         "Castle Wall" => vec![
-            BrickDesc::new("PB_DefaultMicroBrick").size((15, 5, 18)).offset((0, 0, -18)),
+            BrickDesc::new("PB_DefaultSmoothTile").size((15, 5, 18)).offset((0, 0, -18)),
             BrickDesc::new("PB_DefaultMicroBrick").size((5, 5, 10)).offset((0, 10, 10)),
             BrickDesc::new("PB_DefaultMicroBrick").size((5, 5, 10)).offset((0, -10, 10)),
             BrickDesc::new("PB_DefaultBrick").size((15, 5, 8)).offset((0, 0, 28)),
