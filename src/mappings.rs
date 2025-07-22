@@ -978,14 +978,24 @@ lazy_static! {
             BrickDesc::new("PB_DefaultBrick").size((15, 15, 50)),
             BrickDesc::new("PB_DefaultBrick").size((20, 20, 26)).offset((0, 0, -76)).non_priority(true),
         ],
-        // Small Bricks
+
+        //==================================================================================
+        // Brick_SmallBricks by Kris (Based off of Vertical Print Plate Pack by Emil)
+        //==================================================================================
+        "0.75x0.75F" => BrickDesc::new("PB_DefaultMicroBrick").size((4, 4, 2)).offset((1, 1, 0)),
+        "0.75x0.75F Centered" => BrickDesc::new("PB_DefaultMicroBrick").size((4, 4, 2)),
+        "0.75x1F" => BrickDesc::new("PB_DefaultMicroBrick").size((5, 4, 2)).offset((1, 0, 0)),
         "0.75x2F" => BrickDesc::new("PB_DefaultMicroBrick").size((10, 4, 2)).offset((1, 0, 0)),
         "0.75x2F No Overlap" => BrickDesc::new("PB_DefaultMicroBrick").size((10, 4, 2)).offset((1, 0, 0)).non_priority(true),
+        "0.75x1" => BrickDesc::new("PB_DefaultMicroBrick").size((5, 4, 6)).offset((1, 0, 0)),
+        "0.75x2" => BrickDesc::new("PB_DefaultMicroBrick").size((10, 4, 6)).offset((1, 0, 0)),
         "0.5x0.5 Edge" => BrickDesc::new("PB_DefaultMicroBrick").size((2, 2, 6)).offset((3, 3, 0)),
         "0.5x0.5 Edge No Overlap" => BrickDesc::new("PB_DefaultMicroBrick").size((2, 2, 6)).offset((3, 3, 0)).non_priority(true),
         "0.5x0.5F" => BrickDesc::new("PB_DefaultMicroBrick").size((2, 2, 2)).offset((3, 3, 0)),
+        "0.5x0.5F Centered" => BrickDesc::new("PB_DefaultMicroBrick").size((2, 2, 2)),
         "0.5x0.5F No Overlap" => BrickDesc::new("PB_DefaultMicroBrick").size((2, 2, 2)).offset((3, 3, 0)).non_priority(true),
         "0.5x1F" => BrickDesc::new("PB_DefaultMicroBrick").size((5, 2, 2)).offset((3, 0, 0)),
+        "0.5x1F Centered" => BrickDesc::new("PB_DefaultMicroBrick").size((5, 2, 2)),
         "0.5x1F No Overlap" => BrickDesc::new("PB_DefaultMicroBrick").size((5, 2, 2)).offset((3, 0, 0)).non_priority(true),
         "0.5x2F" => BrickDesc::new("PB_DefaultMicroBrick").size((10, 2, 2)).offset((3, 0, 0)),
         "0.5x2F No Overlap" => BrickDesc::new("PB_DefaultMicroBrick").size((10, 2, 2)).offset((3, 0, 0)).non_priority(true),
@@ -996,12 +1006,46 @@ lazy_static! {
         "0.25x0.25 Edge" => BrickDesc::new("PB_DefaultMicroBrick").size((1, 1, 6)).offset((4, 4, 0)),
         "0.25x0.25 Edge No Overlap" => BrickDesc::new("PB_DefaultMicroBrick").size((1, 1, 6)).offset((4, 4, 0)).non_priority(true),
         "0.25x0.25F" => BrickDesc::new("PB_DefaultMicroBrick").size((1, 1, 2)).offset((4, 4, 0)),
+        "0.25x0.25F Centered" => BrickDesc::new("PB_DefaultMicroBrick").size((1, 1, 2)),
         "0.25x0.25F No Overlap" => BrickDesc::new("PB_DefaultMicroBrick").size((1, 1, 2)).offset((4, 4, 0)).non_priority(true),
         "0.25x1F" => BrickDesc::new("PB_DefaultMicroBrick").size((5, 1, 2)).offset((4, 0, 0)),
+        "0.25x1F Centered" => BrickDesc::new("PB_DefaultMicroBrick").size((5, 1, 2)),
         "0.25x1F No Overlap" => BrickDesc::new("PB_DefaultMicroBrick").size((5, 1, 2)).offset((4, 0, 0)).non_priority(true),
+        "0.25x1" => BrickDesc::new("PB_DefaultMicroBrick").size((5, 1, 6)).offset((4, 0, 0)),
         "0.25x2F" => BrickDesc::new("PB_DefaultMicroBrick").size((10, 1, 2)).offset((4, 0, 0)),
         "0.25x2F No Overlap" => BrickDesc::new("PB_DefaultMicroBrick").size((10, 1, 2)).offset((4, 0, 0)).non_priority(true),
         "0.25x2" => BrickDesc::new("PB_DefaultMicroBrick").size((10, 1, 6)).offset((4, 0, 0)),
+        "0.25x0.25F Corner" => vec![
+            BrickDesc::new("PB_DefaultMicroBrick").size((1, 1, 2)).offset((4, -4, 0)),
+            BrickDesc::new("PB_DefaultMicroBrick").size((1, 4, 2)).offset((-1, -4, 0)),
+            BrickDesc::new("PB_DefaultMicroBrick").size((4, 1, 2)).offset((4, 1, 0)),
+        ],
+        "0.25x0.25 Corner" => vec![
+            BrickDesc::new("PB_DefaultMicroBrick").size((1, 1, 6)).offset((4, -4, 0)),
+            BrickDesc::new("PB_DefaultMicroBrick").size((1, 4, 6)).offset((-1, -4, 0)),
+            BrickDesc::new("PB_DefaultMicroBrick").size((4, 1, 6)).offset((4, 1, 0)),
+        ],
+        "0.5x0.5F Corner" => vec![
+            BrickDesc::new("PB_DefaultMicroBrick").size((2, 2, 2)).offset((3, -3, 0)),
+            BrickDesc::new("PB_DefaultMicroBrick").size((2, 3, 2)).offset((-2, -3, 0)),
+            BrickDesc::new("PB_DefaultMicroBrick").size((3, 2, 2)).offset((3, 2, 0)),
+        ],
+        "0.5x0.5 Corner" => vec![
+            BrickDesc::new("PB_DefaultMicroBrick").size((2, 2, 6)).offset((3, -3, 0)),
+            BrickDesc::new("PB_DefaultMicroBrick").size((2, 3, 6)).offset((-2, -3, 0)),
+            BrickDesc::new("PB_DefaultMicroBrick").size((3, 2, 6)).offset((3, 2, 0)),
+        ],
+        "0.75x0.75F Corner" => vec![
+            BrickDesc::new("PB_DefaultMicroBrick").size((4, 4, 2)).offset((1, -1, 0)),
+            BrickDesc::new("PB_DefaultMicroBrick").size((4, 1, 2)).offset((-4, -1, 0)),
+            BrickDesc::new("PB_DefaultMicroBrick").size((1, 4, 2)).offset((1, 4, 0)),
+        ],
+        "0.75x0.75 Corner" => vec![
+            BrickDesc::new("PB_DefaultMicroBrick").size((4, 4, 6)).offset((1, -1, 0)),
+            BrickDesc::new("PB_DefaultMicroBrick").size((4, 1, 6)).offset((-4, -1, 0)),
+            BrickDesc::new("PB_DefaultMicroBrick").size((1, 4, 6)).offset((1, 4, 0)),
+        ],
+
         // Topless Ramps
         "1x1 Topless Ramp x1 Inverted" => BrickDesc::new("PB_DefaultMicroWedge").size((5, 5, 6)).microwedge_rotate(true).rotation_offset(1).inverted_wedge_rotate(true).inverted_modter_rotate(true),
         "1x1 Topless Ramp x1" => BrickDesc::new("PB_DefaultMicroWedge").size((5, 5, 6)).microwedge_rotate(true).rotation_offset(3),
