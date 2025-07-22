@@ -1292,6 +1292,11 @@ lazy_static! {
                 .direction_override(direction)
                 .modter(true)])
         },
+
+        //==================================================================================
+        // Arch Support for Addons:
+        // Brick_Arch by TheGeek & Ephialtes (Arch Brick Pack!)
+        //==================================================================================
         r"(\d+)x(\d+)x?(?P<height>\d+)? Arch(?P<up> Up)?" => |captures, _| {
             let width: u32 = captures.get(1).unwrap().as_str().parse().ok()?;
             let length: u32 = captures.get(2).unwrap().as_str().parse().ok()?;
