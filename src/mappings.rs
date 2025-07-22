@@ -129,10 +129,12 @@ lazy_static! {
         ],
 
         "Castle Wall" => vec![
-            BrickDesc::new("PB_DefaultTile").size((5, 5, 6*6)).offset((0, -10, 0)),
-            BrickDesc::new("PB_DefaultTile").size((5, 5, 6*6)).offset((0, 10, 0)),
-            BrickDesc::new("PB_DefaultTile").size((5, 5, 3*6)).offset((0, 0, -9*2)),
-            BrickDesc::new("PB_DefaultTile").size((5, 5, 4*2)).offset((0, 0, 14*2)),
+            BrickDesc::new("PB_DefaultMicroBrick").size((15, 5, 18)).offset((0, 0, -18)),
+            BrickDesc::new("PB_DefaultMicroBrick").size((5, 5, 10)).offset((0, 10, 10)),
+            BrickDesc::new("PB_DefaultMicroBrick").size((5, 5, 10)).offset((0, -10, 10)),
+            BrickDesc::new("PB_DefaultBrick").size((15, 5, 8)).offset((0, 0, 28)),
+            BrickDesc::new("PB_DefaultMicroWedge").size((2, 5, 2)).offset((0, 3, 18)).microwedge_rotate(true).rotation_offset(1).inverted_wedge_rotate(true).inverted_modter_rotate(true),
+            BrickDesc::new("PB_DefaultMicroWedge").size((2, 5, 2)).offset((0, -3, 18)).microwedge_rotate(true).rotation_offset(3).inverted_wedge_rotate(true).inverted_modter_rotate(true),
         ],
 
         "1x4x5 Window" => vec![
