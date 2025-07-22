@@ -98,7 +98,11 @@ lazy_static! {
 
         "2x2 Disc" => BrickDesc::new("B_2x2F_Round"),
         "2x2 disc Inv" => BrickDesc::new("B_2x2F_Round"), // 1RBP
-        "Music Brick" => BrickDesc::new("PB_DefaultBrick").size((5, 5, 6)),
+        "Music Brick" => vec![
+            BrickDesc::new("PB_DefaultMicroBrick").size((5, 5, 1)).offset((0, 0, 5)),
+            BrickDesc::new("PB_DefaultMicroBrick").size((5, 3, 5)).offset((-2, 0, -1)),
+            BrickDesc::new("B_1x1F_Speaker").lattice_rotate(true).offset((3, 0, -1)).rotation_offset(3),
+        ],
         "1x4x2 Fence" => vec![
             BrickDesc::new("PB_DefaultMicroBrick").size((5, 20, 2)).rotation_offset(0).offset((0, 0, -10)),
             BrickDesc::new("BP_LatticeThin").size((20, 10, 1)).lattice_rotate(true).rotation_offset(1).offset((0, 0, 2)),
@@ -182,6 +186,23 @@ lazy_static! {
                 .color_override(brs::Color::from_rgba(0, 0, 0, 255)),
             BrickDesc::new("PB_DefaultMicroWedge").size((20, 10, 2)).offset((0, 10, 0)).rotation_offset(0)
                 .color_override(brs::Color::from_rgba(0, 0, 0, 255)),
+        ],
+
+        "Spawn Point" => vec![
+            BrickDesc::new("PB_DefaultSmoothTile").size((5, 10, 2)).offset((5, 10, -28)),
+            BrickDesc::new("PB_DefaultSmoothTile").size((5, 10, 2)).offset((-5, -10, -28)),
+            BrickDesc::new("PB_DefaultSmoothTile").size((10, 5, 2)).offset((10, -5, -28)),
+            BrickDesc::new("PB_DefaultSmoothTile").size((10, 5, 2)).offset((-10, 5, -28)),
+            BrickDesc::new("PB_DefaultMicroWedge").size((2, 5, 2)).offset((0, -3, -28)).rotation_offset(1),
+            BrickDesc::new("PB_DefaultMicroWedge").size((5, 2, 2)).offset((0, 3, -28)).rotation_offset(2),
+            BrickDesc::new("PB_DefaultMicroWedge").size((2, 5, 2)).offset((0, -3, -28)).rotation_offset(3)
+                .color_override(brs::Color::from_rgba(0, 0, 0, 255)),
+            BrickDesc::new("PB_DefaultMicroWedge").size((5, 2, 2)).offset((0, 3, -28)).rotation_offset(0)
+                .color_override(brs::Color::from_rgba(0, 0, 0, 255)),
+            BrickDesc::new("PB_DefaultMicroBrick").size((1, 5, 2)).offset((0, 0, -28))
+                .color_override(brs::Color::from_rgba(0, 0, 0, 255)),
+            BrickDesc::new("PB_DefaultMicroBrick").size((15, 15, 28)).offset((0, 0, 2))
+                .color_override(brs::Color::from_rgba(150, 150, 150, 180)).nocollide(),
         ],
 
         "2x2x5 Lattice" => vec![

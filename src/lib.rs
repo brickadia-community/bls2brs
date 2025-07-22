@@ -100,7 +100,8 @@ pub fn convert(reader: bl_save::Reader<impl BufRead>) -> io::Result<ConvertRepor
             inverted_modter_rotate,
             inverted_wedge_rotate,
             modter,
-            lattice_rotate
+            lattice_rotate,
+            nocollide
         } in mappings
         {
             let asset_name_index = converter.asset(asset);
@@ -183,13 +184,19 @@ pub fn convert(reader: bl_save::Reader<impl BufRead>) -> io::Result<ConvertRepor
                 brs::ColorMode::Set(color_index)
             };
 
+            let collision = if from.base.collision {
+                !nocollide
+            } else {
+                false
+            };
+
             let brick = brs::Brick {
                 asset_name_index: asset_name_index as u32,
                 size,
                 position,
                 direction: direction_override.unwrap_or(brs::Direction::ZPositive),
                 rotation: rotation.try_into().unwrap(),
-                collision: from.base.collision,
+                collision,
                 visibility: from.base.rendering,
                 material_index: material_index as u32,
                 color,
