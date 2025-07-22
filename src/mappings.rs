@@ -72,36 +72,6 @@ lazy_static! {
         "1x4x2 Picket" => BrickDesc::new("B_Picket_Fence"),
 
         //==================================================================================
-        // Brick_1RandomPack by FART and King Tinks (One Random Brick Pack)
-        //==================================================================================
-        "1x1 cone Inv" => BrickDesc::new("B_1x1_Cone").direction_override(ZNegative),
-        "2x2x2 cone Inv" => BrickDesc::new("B_2x2_Cone").direction_override(ZNegative),
-        "2x2 disc Inv" => BrickDesc::new("B_2x2F_Round"),
-        // 1RandomBrickPack 45° to 25° Ramp Adapters
-        "45° 25° Adapter A" => BrickDesc::new("PB_DefaultRampInnerCorner").size((15, 10, 6)).rotation_offset(0),
-        "45° 25° Adapter B" => BrickDesc::new("PB_DefaultRampInnerCorner").size((10, 15, 6)).rotation_offset(1),
-        "45° 25° Adapter C" => BrickDesc::new("PB_DefaultRampCorner").size((15, 10, 6)).rotation_offset(0),
-        "45° 25° Adapter D" => BrickDesc::new("PB_DefaultRampCorner").size((10, 15, 6)).rotation_offset(1),
-        "-45°-25° Inv Adapter B" => BrickDesc::new("PB_DefaultRampInnerCorner").size((15, 10, 6)).rotation_offset(0).direction_override(ZNegative),
-        "-45°-25° Inv Adapter A" => BrickDesc::new("PB_DefaultRampInnerCorner").size((10, 15, 6)).rotation_offset(1).direction_override(ZNegative),
-        "-45° -25° Inv Adapter D" => BrickDesc::new("PB_DefaultRampCorner").size((15, 10, 6)).rotation_offset(0).direction_override(ZNegative),
-        "-45° -25° Inv Adapter C" => BrickDesc::new("PB_DefaultRampCorner").size((10, 15, 6)).rotation_offset(1).direction_override(ZNegative),
-        // 1RandomBrickPack Long Wedges
-        "16.7° 1x2 Ramp" => BrickDesc::new("PB_DefaultWedge").size((10, 5, 4)).rotation_offset(0),
-        "11.31° 1x3 Ramp" => BrickDesc::new("PB_DefaultWedge").size((15, 5, 4)).rotation_offset(0),
-        "8.53° 1x4 Ramp" => BrickDesc::new("PB_DefaultWedge").size((20, 5, 4)).rotation_offset(0),
-        // 1RandomBrickPack Correct Octo Mappings
-        "2x2x2 Octo Elbow" => BrickDesc::new("B_2x_Octo_90Deg"),
-        "2x2x2 Octo - Elbow" => BrickDesc::new("B_2x_Octo_90Deg").direction_override(ZNegative).rotation_offset(3),
-        "2x2x2 Octo T Vert" => BrickDesc::new("B_2x_Octo_T"),
-        "2x2x2 Octo Elbow Horz" => BrickDesc::new("B_2x_Octo_90Deg").direction_override(XPositive),
-        "2x2x2 Octo T Horz" => BrickDesc::new("B_2x_Octo_T").direction_override(YNegative),
-        "2x2x2 Octo T" => BrickDesc::new("B_2x_Octo_T").direction_override(YNegative).rotation_offset(2),
-        "2x2x2 Octo T inv" => BrickDesc::new("B_2x_Octo_T").direction_override(YNegative).rotation_offset(0),
-        "1x2 Octo Plate90" => BrickDesc::new("B_2x2F_Octo").lattice_rotate(true).rotation_offset(1).offset((3, 0, 0)),
-        "2x2 Octo Brick90" => BrickDesc::new("B_2x_Octo").lattice_rotate(true).rotation_offset(1),
-
-        //==================================================================================
         // Approximate Mappings
         //==================================================================================
         "2x2 Disc" => BrickDesc::new("B_2x2F_Round"),
@@ -410,6 +380,32 @@ lazy_static! {
         //==================================================================================
         // Brick_1RandomPack by FART and King Tinks (One Random Brick Pack)
         //==================================================================================
+        "1x1 cone Inv" => BrickDesc::new("B_1x1_Cone").direction_override(ZNegative),
+        "2x2x2 cone Inv" => BrickDesc::new("B_2x2_Cone").direction_override(ZNegative),
+        "2x2 disc Inv" => BrickDesc::new("B_2x2F_Round"),
+        // 1RandomBrickPack 45° to 25° Ramp Adapters
+        "45° 25° Adapter A" => BrickDesc::new("PB_DefaultRampInnerCorner").size((15, 10, 6)).rotation_offset(0),
+        "45° 25° Adapter B" => BrickDesc::new("PB_DefaultRampInnerCorner").size((10, 15, 6)).rotation_offset(1),
+        "45° 25° Adapter C" => BrickDesc::new("PB_DefaultRampCorner").size((15, 10, 6)).rotation_offset(0),
+        "45° 25° Adapter D" => BrickDesc::new("PB_DefaultRampCorner").size((10, 15, 6)).rotation_offset(1),
+        "-45°-25° Inv Adapter B" => BrickDesc::new("PB_DefaultRampInnerCorner").size((15, 10, 6)).rotation_offset(0).direction_override(ZNegative),
+        "-45°-25° Inv Adapter A" => BrickDesc::new("PB_DefaultRampInnerCorner").size((10, 15, 6)).rotation_offset(1).direction_override(ZNegative),
+        "-45° -25° Inv Adapter D" => BrickDesc::new("PB_DefaultRampCorner").size((15, 10, 6)).rotation_offset(0).direction_override(ZNegative),
+        "-45° -25° Inv Adapter C" => BrickDesc::new("PB_DefaultRampCorner").size((10, 15, 6)).rotation_offset(1).direction_override(ZNegative),
+        // 1RandomBrickPack Long Wedges
+        "16.7° 1x2 Ramp" => BrickDesc::new("PB_DefaultWedge").size((10, 5, 4)).rotation_offset(0),
+        "11.31° 1x3 Ramp" => BrickDesc::new("PB_DefaultWedge").size((15, 5, 4)).rotation_offset(0),
+        "8.53° 1x4 Ramp" => BrickDesc::new("PB_DefaultWedge").size((20, 5, 4)).rotation_offset(0),
+        // 1RandomBrickPack Correct Octo Mappings
+        "2x2x2 Octo Elbow" => BrickDesc::new("B_2x_Octo_90Deg"),
+        "2x2x2 Octo - Elbow" => BrickDesc::new("B_2x_Octo_90Deg").direction_override(ZNegative).rotation_offset(3),
+        "2x2x2 Octo T Vert" => BrickDesc::new("B_2x_Octo_T"),
+        "2x2x2 Octo Elbow Horz" => BrickDesc::new("B_2x_Octo_90Deg").direction_override(XPositive),
+        "2x2x2 Octo T Horz" => BrickDesc::new("B_2x_Octo_T").direction_override(YNegative),
+        "2x2x2 Octo T" => BrickDesc::new("B_2x_Octo_T").direction_override(YNegative).rotation_offset(2),
+        "2x2x2 Octo T inv" => BrickDesc::new("B_2x_Octo_T").direction_override(YNegative).rotation_offset(0),
+        "1x2 Octo Plate90" => BrickDesc::new("B_2x2F_Octo").lattice_rotate(true).rotation_offset(1).offset((3, 0, 0)),
+        "2x2 Octo Brick90" => BrickDesc::new("B_2x_Octo").lattice_rotate(true).rotation_offset(1),
         "2x2f Print 90" => BrickDesc::new("PB_DefaultSmoothTile").size((10, 10, 2)).offset((3, 0, 0)).direction_override(YPositive),
         "2x2f Round Ceiling" => BrickDesc::new("PB_DefaultPole").size((10, 10, 2)),
         "2x2f Round Print 90" => BrickDesc::new("PB_DefaultPole").size((10, 10, 2)).offset((3, 0, 0)).direction_override(YNegative),
@@ -725,6 +721,19 @@ lazy_static! {
             BrickDesc::new("PB_DefaultTile").size((20, 10, 2)).offset((10, 0, 0)),
             BrickDesc::new("PB_DefaultTile").size((10, 10, 2)).offset((-10, -10, 0)),
         ],
+
+        //==================================================================================
+        // Brick_1x1FRoundPrint by Crispy (Coins!)
+        //==================================================================================
+        "1x1F Round Print" => vec![
+            BrickDesc::new("PB_DefaultPole").size((5, 5, 1)).offset((0, 0, 1)),
+            BrickDesc::new("PB_DefaultPole").size((4, 4, 1)).offset((0, 0, -1)),
+        ],
+
+        //==================================================================================
+        // Brick_2x2FRoundPrint by Space Guy (Pizza's ready!)
+        //==================================================================================
+        "2x2F Round Print" => BrickDesc::new("PB_DefaultPole").size((10, 10, 2)),
 
         //==================================================================================
         // Brick_2x2Wedges by BlackDragonIV (A welcome addition to Tophius's wedge bricks)
