@@ -100,7 +100,7 @@ pub fn convert(reader: bl_save::Reader<impl BufRead>) -> io::Result<ConvertRepor
             inverted_modter_rotate,
             inverted_wedge_rotate,
             modter,
-            lattice_rotate,
+            rotate_by_direction,
             nocollide
         } in mappings
         {
@@ -154,7 +154,7 @@ pub fn convert(reader: bl_save::Reader<impl BufRead>) -> io::Result<ConvertRepor
                 }
             }
 
-            if lattice_rotate {
+            if rotate_by_direction {
                 if rotation == 0 || rotation == 2 {
                     direction_override = if rotation == 0 {
                         Some(brs::Direction::YPositive)

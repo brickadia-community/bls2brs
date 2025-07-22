@@ -13,7 +13,7 @@ pub struct BrickDesc {
     pub inverted_modter_rotate: bool,
     pub inverted_wedge_rotate: bool,
     pub modter: bool,
-    pub lattice_rotate: bool,
+    pub rotate_by_direction: bool,
     pub nocollide: bool,
 }
 
@@ -31,7 +31,7 @@ impl BrickDesc {
             inverted_modter_rotate: false,
             inverted_wedge_rotate: false,
             modter: false,
-            lattice_rotate: false,
+            rotate_by_direction: false,
             nocollide: false,
         }
     }
@@ -86,8 +86,8 @@ impl BrickDesc {
         self
     }
 
-    pub fn lattice_rotate(mut self, lattice_rotate: bool) -> Self {
-        self.lattice_rotate = lattice_rotate;
+    pub fn rotate_by_direction(mut self) -> Self {
+        self.rotate_by_direction = true;
         self
     }
 
