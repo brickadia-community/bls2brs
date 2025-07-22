@@ -1096,7 +1096,7 @@ lazy_static! {
 
         // TODO: Remove (?: Print)? when prints exist
         //==================================================================================
-        // Support for Addons:
+        // Ramp Support for Addons:
         // Brick_18Degree by General and Tophius (A pack of seven x4 Ramps)
         //==================================================================================
         r"^(-)?(18|25|45|65|72|80)° ?(Inv )?Ramp(?: (\d+)x)?( Corner)?(?: Print)?$" => |captures, _| {
@@ -1190,6 +1190,11 @@ lazy_static! {
             let length: u32 = captures.get(2).unwrap().as_str().parse().ok()?;
             Some(vec![BrickDesc::new("PB_DefaultBrick").size((width * 5, length * 5, 2))])
         },
+
+        //==================================================================================
+        // Cube Support for Addons:
+        // Brick_2x_Cube by El Dorito (A baseplate cube 2 wide.)
+        //==================================================================================
         r"^(\d+)x Cube(?: (\d+)H)?$" => |captures, _| {
             let size: u32 = captures.get(1).unwrap().as_str().parse().ok()?;
             let extension: Option<u32> = captures.get(2).map(|m| m.as_str().parse().ok()).flatten();
