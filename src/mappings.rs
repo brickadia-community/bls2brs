@@ -760,6 +760,13 @@ lazy_static! {
         "4x4f_PrintPlateC" => BrickDesc::new("PB_DefaultMicroBrick").size((20, 20, 2)),
 
         //==================================================================================
+        // Brick_PrintPlatesCeiling by Demian, Space Guy and Killer_Whale (Ceiling prints plates that you can build under.)
+        //==================================================================================
+        "1x1F Ceiling Print Plate" => BrickDesc::new("PB_DefaultMicroBrick").size((5, 5, 2)),
+        "1x2F Ceiling Print Plate" => BrickDesc::new("PB_DefaultMicroBrick").size((10, 5, 2)),
+        "2x2F Ceiling Print Plate" => BrickDesc::new("PB_DefaultMicroBrick").size((10, 10, 2)),
+
+        //==================================================================================
         // Brick_4x4_Round by Niven and Tophius (A must need, for any build.)
         //==================================================================================
         "4x4 Round" => vec![
