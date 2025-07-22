@@ -52,12 +52,11 @@ lazy_static! {
     ];
 
     pub static ref BRICK_MAP_LITERAL: HashMap<&'static str, BrickMapping> = brick_map_literal![
-        // # Correct mappings
-
+        //==================================================================================
+        // Correct default mappings
+        //==================================================================================
         "1x1 Cone" => BrickDesc::new("B_1x1_Cone"),
         "2x2x2 Cone" => BrickDesc::new("B_2x2_Cone"),
-        "1x1 cone Inv" => BrickDesc::new("B_1x1_Cone").direction_override(ZNegative), // 1RandomBrickPack
-        "2x2x2 cone Inv" => BrickDesc::new("B_2x2_Cone").direction_override(ZNegative), // 1RBP
         "1x1 Round" => BrickDesc::new("B_1x1_Round"),
         "1x1 Round Horiz" => BrickDesc::new("B_1x1_Round").lattice_rotate(true),
         "1x1 Octo Plate" => BrickDesc::new("B_1x1F_Octo"),
@@ -72,6 +71,12 @@ lazy_static! {
         "8x8 Grill" => BrickDesc::new("B_8x8_Lattice_Plate"),
         "1x4x2 Picket" => BrickDesc::new("B_Picket_Fence"),
 
+        //==================================================================================
+        // Brick_1RandomPack by FART and King Tinks (One Random Brick Pack)
+        //==================================================================================
+        "1x1 cone Inv" => BrickDesc::new("B_1x1_Cone").direction_override(ZNegative),
+        "2x2x2 cone Inv" => BrickDesc::new("B_2x2_Cone").direction_override(ZNegative),
+        "2x2 disc Inv" => BrickDesc::new("B_2x2F_Round"),
         // 1RandomBrickPack 45° to 25° Ramp Adapters
         "45° 25° Adapter A" => BrickDesc::new("PB_DefaultRampInnerCorner").size((15, 10, 6)).rotation_offset(0),
         "45° 25° Adapter B" => BrickDesc::new("PB_DefaultRampInnerCorner").size((10, 15, 6)).rotation_offset(1),
@@ -96,10 +101,10 @@ lazy_static! {
         "1x2 Octo Plate90" => BrickDesc::new("B_2x2F_Octo").lattice_rotate(true).rotation_offset(1).offset((3, 0, 0)),
         "2x2 Octo Brick90" => BrickDesc::new("B_2x_Octo").lattice_rotate(true).rotation_offset(1),
 
-        // # Approximate mappings
-
+        //==================================================================================
+        // Approximate Mappings
+        //==================================================================================
         "2x2 Disc" => BrickDesc::new("B_2x2F_Round"),
-        "2x2 disc Inv" => BrickDesc::new("B_2x2F_Round"), // 1RBP
         "Music Brick" => vec![
             BrickDesc::new("PB_DefaultMicroBrick").size((5, 5, 1)).offset((0, 0, 5)),
             BrickDesc::new("PB_DefaultMicroBrick").size((5, 3, 5)).offset((-2, 0, -1)),
@@ -402,7 +407,9 @@ lazy_static! {
             BRICK_ROAD_CENTER.clone().size((78, 4, 2)).offset((0, 82, 0)),
         ],
 
-        // 1RandomBrickPack
+        //==================================================================================
+        // Brick_1RandomPack by FART and King Tinks (One Random Brick Pack)
+        //==================================================================================
         "2x2f Print 90" => BrickDesc::new("PB_DefaultSmoothTile").size((10, 10, 2)).offset((3, 0, 0)).direction_override(YPositive),
         "2x2f Round Ceiling" => BrickDesc::new("PB_DefaultPole").size((10, 10, 2)),
         "2x2f Round Print 90" => BrickDesc::new("PB_DefaultPole").size((10, 10, 2)).offset((3, 0, 0)).direction_override(YNegative),
@@ -456,6 +463,7 @@ lazy_static! {
             BrickDesc::new("PB_DefaultMicroWedge").size((7, 2, 2)).offset((-28, 7, 0)).rotation_offset(1),
             BrickDesc::new("PB_DefaultMicroWedge").size((2, 7, 2)).offset((-28, -7, 0)).rotation_offset(2),
         ],
+
         // Lazy half-round mappings
         "1x1 half-round 90" => BrickDesc::new("PB_DefaultMicroWedge").size((5, 5, 6)).microwedge_rotate(true).rotation_offset(0),
         "2x1 half-round 90" => BrickDesc::new("PB_DefaultMicroWedge").size((5, 10, 6)).microwedge_rotate(true).rotation_offset(0),
@@ -717,7 +725,36 @@ lazy_static! {
             BrickDesc::new("PB_DefaultTile").size((20, 10, 2)).offset((10, 0, 0)),
             BrickDesc::new("PB_DefaultTile").size((10, 10, 2)).offset((-10, -10, 0)),
         ],
-         // Brick_Wedge
+
+        //==================================================================================
+        // Brick_2x2Wedges by BlackDragonIV (A welcome addition to Tophius's wedge bricks)
+        //==================================================================================
+        "2x2F Wedge L" => vec![
+            BrickDesc::new("PB_DefaultBrick").size((5, 10, 2)).offset((0, 5, 0)),
+            BrickDesc::new("PB_DefaultMicroWedge").size((5, 10, 2)).offset((0, -5, 0)).rotation_offset(3),
+        ],
+        "2x2F Wedge R" => vec![
+            BrickDesc::new("PB_DefaultBrick").size((5, 10, 2)).offset((0, -5, 0)),
+            BrickDesc::new("PB_DefaultMicroWedge").size((10, 5, 2)).offset((0, 5, 0)).rotation_offset(0),
+        ],
+        "2x2 Wedge L" => vec![
+            BrickDesc::new("PB_DefaultBrick").size((5, 10, 6)).offset((0, 5, 0)),
+            BrickDesc::new("PB_DefaultMicroWedge").size((5, 10, 6)).offset((0, -5, 0)).rotation_offset(3),
+        ],
+        "2x2 Wedge R" => vec![
+            BrickDesc::new("PB_DefaultBrick").size((5, 10, 6)).offset((0, -5, 0)),
+            BrickDesc::new("PB_DefaultMicroWedge").size((10, 5, 6)).offset((0, 5, 0)).rotation_offset(0),
+        ],
+        "2x2x5 Wedge L" => vec![
+            BrickDesc::new("PB_DefaultBrick").size((5, 10, 30)).offset((0, 5, 0)),
+            BrickDesc::new("PB_DefaultMicroWedge").size((5, 10, 30)).offset((0, -5, 0)).rotation_offset(3),
+        ],
+        "2x2x5 Wedge R" => vec![
+            BrickDesc::new("PB_DefaultBrick").size((5, 10, 30)).offset((0, -5, 0)),
+            BrickDesc::new("PB_DefaultMicroWedge").size((10, 5, 30)).offset((0, 5, 0)).rotation_offset(0),
+        ],
+
+        // Brick_Wedge
         "3x3F Wedge" => vec![
             BrickDesc::new("PB_DefaultSideWedge").size((15, 15, 2)).rotation_offset(3),
             BrickDesc::new("PB_DefaultSideWedge").size((5, 5, 2)).rotation_offset(1).offset((10, 10, 0)),
@@ -1049,6 +1086,10 @@ lazy_static! {
         },
 
         // TODO: Remove (?: Print)? when prints exist
+        //==================================================================================
+        // Support for Addons:
+        // Brick_18Degree by General and Tophius (A pack of seven x4 Ramps)
+        //==================================================================================
         r"^(-)?(18|25|45|65|72|80)° ?(Inv )?Ramp(?: (\d+)x)?( Corner)?(?: Print)?$" => |captures, _| {
             let neg = captures.get(1).is_some();
             let inv = captures.get(3).is_some();
@@ -1229,6 +1270,10 @@ lazy_static! {
                 .rotation_offset(rotation)
             ])
         },
+
+        //==================================================================================
+        // Brick_1RandomPack by FART and King Tinks (One Random Brick Pack)
+        //==================================================================================
         // 1RandomPack Panels
         r"^(\d)h Panel (?P<corner>Corner )?(?P<length>\d)x" => |captures, _| {
             let height: u32 = captures.get(1).unwrap().as_str().parse().ok()?;
@@ -1285,6 +1330,7 @@ lazy_static! {
                     .rotation_offset(0).direction_override(dir).inverted_wedge_rotate(iwr),
             ])
         },
+
         // Log Bricks Addon
         r"^1x(\d) Log( Wall)?" => |captures, _| {
             let width: i32 = captures.get(1).unwrap().as_str().parse().ok()?;
