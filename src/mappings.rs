@@ -743,6 +743,29 @@ lazy_static! {
         "4x4f_PrintPlateC" => BrickDesc::new("PB_DefaultMicroBrick").size((20, 20, 2)),
 
         //==================================================================================
+        // Brick_4x4_Round by Niven and Tophius (A must need, for any build.)
+        //==================================================================================
+        "4x4 Round" => vec![
+            BrickDesc::new("PB_DefaultBrick").size((10, 10, 6)),
+            BrickDesc::new("PB_DefaultMicroWedge").size((4, 4, 6)).offset((14, 14, 0)).rotation_offset(0),
+            BrickDesc::new("PB_DefaultMicroWedge").size((4, 4, 6)).offset((14, -14, 0)).rotation_offset(3),
+            BrickDesc::new("PB_DefaultMicroWedge").size((4, 4, 6)).offset((-14, -14, 0)).rotation_offset(2),
+            BrickDesc::new("PB_DefaultMicroWedge").size((4, 4, 6)).offset((-14, 14, 0)).rotation_offset(1),
+            BrickDesc::new("PB_DefaultMicroBrick").size((4, 10, 6)).offset((0, 14, 0)),
+            BrickDesc::new("PB_DefaultMicroBrick").size((4, 10, 6)).offset((0, -14, 0)),
+            BrickDesc::new("PB_DefaultMicroBrick").size((10, 4, 6)).offset((14, 0, 0)),
+            BrickDesc::new("PB_DefaultMicroBrick").size((10, 4, 6)).offset((-14, 0, 0)),
+            BrickDesc::new("PB_DefaultMicroWedge").size((1, 5, 6)).offset((-5, 19, 0)),
+            BrickDesc::new("PB_DefaultMicroWedge").size((5, 1, 6)).offset((5, 19, 0)).rotation_offset(0),
+            BrickDesc::new("PB_DefaultMicroWedge").size((1, 5, 6)).offset((5, -19, 0)).rotation_offset(3),
+            BrickDesc::new("PB_DefaultMicroWedge").size((5, 1, 6)).offset((-5, -19, 0)).rotation_offset(2),
+            BrickDesc::new("PB_DefaultMicroWedge").size((5, 1, 6)).offset((19, -5, 0)).rotation_offset(3),
+            BrickDesc::new("PB_DefaultMicroWedge").size((1, 5, 6)).offset((19, 5, 0)).rotation_offset(0),
+            BrickDesc::new("PB_DefaultMicroWedge").size((5, 1, 6)).offset((-19, 5, 0)).rotation_offset(1),
+            BrickDesc::new("PB_DefaultMicroWedge").size((1, 5, 6)).offset((-19, -5, 0)).rotation_offset(2),
+        ],
+
+        //==================================================================================
         // Brick_2x2Wedges by BlackDragonIV (A welcome addition to Tophius's wedge bricks)
         //==================================================================================
         "2x2F Wedge L" => vec![
