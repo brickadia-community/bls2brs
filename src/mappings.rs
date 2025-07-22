@@ -736,6 +736,13 @@ lazy_static! {
         "2x2F Round Print" => BrickDesc::new("PB_DefaultPole").size((10, 10, 2)),
 
         //==================================================================================
+        // Brick_4x4F_Print_Plates by Racerboy (duh)
+        // Brick_4x4F_Print_Plate by AndreZ (A 4x4 you can BUILD on.)
+        //==================================================================================
+        "4x4f_PrintPlate" => BrickDesc::new("PB_DefaultSmoothTile").size((20, 20, 2)),
+        "4x4f_PrintPlateC" => BrickDesc::new("PB_DefaultMicroBrick").size((20, 20, 2)),
+
+        //==================================================================================
         // Brick_2x2Wedges by BlackDragonIV (A welcome addition to Tophius's wedge bricks)
         //==================================================================================
         "2x2F Wedge L" => vec![
