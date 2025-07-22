@@ -81,6 +81,13 @@ pub fn convert(reader: bl_save::Reader<impl BufRead>) -> io::Result<ConvertRepor
             }
         };
 
+        // match from.base.print.as_str() {
+        //     "A" => {
+        //
+        //     }
+        //     _ => {}
+        // }
+
         for BrickDesc {
             asset,
             mut size,
@@ -148,11 +155,19 @@ pub fn convert(reader: bl_save::Reader<impl BufRead>) -> io::Result<ConvertRepor
 
             if lattice_rotate {
                 if rotation == 0 || rotation == 2 {
-                    direction_override = Some(brs::Direction::YPositive);
+                    direction_override = if rotation == 0 {
+                        Some(brs::Direction::YPositive)
+                    } else {
+                        Some(brs::Direction::YNegative)
+                    };
                     let (x, y, z) = size;
                     size = (y, x, z);
                 } else {
-                    direction_override = Some(brs::Direction::XPositive);
+                    direction_override = if rotation == 1 {
+                        Some(brs::Direction::XNegative)
+                    } else {
+                        Some(brs::Direction::XPositive)
+                    };
                 }
             }
 
@@ -161,6 +176,12 @@ pub fn convert(reader: bl_save::Reader<impl BufRead>) -> io::Result<ConvertRepor
                 (inverted_wedge_rotate && (rotation == 0 || rotation == 2)) {
                 rotation = (rotation + 2) % 4;
             }
+
+            let color = if let Some(c) = color_override {
+                brs::ColorMode::Custom(c)
+            } else {
+                brs::ColorMode::Set(color_index)
+            };
 
             let brick = brs::Brick {
                 asset_name_index: asset_name_index as u32,
@@ -171,7 +192,7 @@ pub fn convert(reader: bl_save::Reader<impl BufRead>) -> io::Result<ConvertRepor
                 collision: from.base.collision,
                 visibility: from.base.rendering,
                 material_index: material_index as u32,
-                color: brs::ColorMode::Set(color_index),
+                color,
                 owner_index: BRICK_OWNER as u32,
             };
 

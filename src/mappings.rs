@@ -4,6 +4,7 @@ use crate::types::{BrickDesc, BrickMapping};
 use lazy_static::lazy_static;
 use regex::{Captures, Regex};
 use std::collections::{HashMap, HashSet};
+use brs::Color;
 use brs::Direction::*;
 
 type RegexHandler = Box<dyn Fn(Captures, &bl_save::Brick) -> Option<BrickMapping> + Sync>;
@@ -56,11 +57,14 @@ lazy_static! {
         "1x1 cone Inv" => BrickDesc::new("B_1x1_Cone").direction_override(ZNegative), // 1RandomBrickPack
         "2x2x2 cone Inv" => BrickDesc::new("B_2x2_Cone").direction_override(ZNegative), // 1RBP
         "1x1 Round" => BrickDesc::new("B_1x1_Round"),
+        "1x1 Round Horiz" => BrickDesc::new("B_1x1_Round").lattice_rotate(true),
         "1x1 Octo Plate" => BrickDesc::new("B_1x1F_Octo"),
         "1x1F Round" => BrickDesc::new("B_1x1F_Round"),
+        "1x1f Round Horiz" => BrickDesc::new("B_1x1F_Round").lattice_rotate(true),
         "2x2 Round" => BrickDesc::new("B_2x2_Round"),
         "2x2F Round" => BrickDesc::new("B_2x2F_Round"),
         "Pine Tree" => BrickDesc::new("B_Pine_Tree").offset((0, 0, -6)),
+        "2x2 Bush" => BrickDesc::new("B_Bush").offset((0, 0, -14)),
         "2x2 Corner" => BrickDesc::new("B_2x2_Corner").rotation_offset(0),
         "2x2 Octo Plate" => BrickDesc::new("B_2x2F_Octo"),
         "8x8 Grill" => BrickDesc::new("B_8x8_Lattice_Plate"),
@@ -87,8 +91,8 @@ lazy_static! {
         "2x2x2 Octo T Horz" => BrickDesc::new("B_2x_Octo_T").direction_override(YNegative),
         "2x2x2 Octo T" => BrickDesc::new("B_2x_Octo_T").direction_override(YNegative).rotation_offset(2),
         "2x2x2 Octo T inv" => BrickDesc::new("B_2x_Octo_T").direction_override(YNegative).rotation_offset(0),
-        "1x2 Octo Plate90" => BrickDesc::new("B_2x2F_Octo").direction_override(YNegative).offset((3, 0, 0)),
-        "2x2 Octo Brick90" => BrickDesc::new("B_2x_Octo").direction_override(YNegative),
+        "1x2 Octo Plate90" => BrickDesc::new("B_2x2F_Octo").lattice_rotate(true).rotation_offset(1).offset((3, 0, 0)),
+        "2x2 Octo Brick90" => BrickDesc::new("B_2x_Octo").lattice_rotate(true).rotation_offset(1),
 
         // # Approximate mappings
 
@@ -111,6 +115,12 @@ lazy_static! {
         "Gravestone" => BrickDesc::new("B_Gravestone"),
         "House Door" => GENERIC_DOOR.clone(),
         "Plain Door" => GENERIC_DOOR.clone(),
+        "1x1 Bamboo" => BrickDesc::new("B_1x1_Round").offset((-10, -10, 0)),
+        "4x3 Leaves" => vec![
+            BrickDesc::new("PB_DefaultMicroBrick").size((10, 3, 2)),
+            BrickDesc::new("B_1x1F_Octo").offset((0, 15, 0)),
+            BrickDesc::new("B_1x1F_Octo").offset((0, -15, 0)),
+        ],
 
         "2x2 Octo" => vec![
             BrickDesc::new("B_2x2F_Octo").offset((0, 0, -4)),
@@ -126,12 +136,27 @@ lazy_static! {
         ],
 
         "1x4x5 Window" => vec![
-            BrickDesc::new("PB_DefaultBrick").size((5, 4*5, 2)).rotation_offset(0).offset((0, 0, -14*2)),
-            BrickDesc::new("PB_DefaultTile").size((5, 4*5, 5*6-2)).rotation_offset(0).offset((0, 0, 2))
-                .color_override(brs::Color::from_rgba(255, 255, 255, 76)),
+            BrickDesc::new("PB_DefaultMicroBrick").size((5, 20, 2)).rotation_offset(0).offset((0, 0, -28)),
+            BrickDesc::new("PB_DefaultMicroBrick").size((5, 20, 1)).rotation_offset(0).offset((0, 0, 29)),
+            BrickDesc::new("PB_DefaultMicroBrick").size((5, 1, 27)).rotation_offset(0).offset((0, 19, 1)),
+            BrickDesc::new("PB_DefaultMicroBrick").size((5, 1, 27)).rotation_offset(0).offset((0, -19, 1)),
+            BrickDesc::new("PB_DefaultMicroBrick").size((1, 18, 27)).rotation_offset(0).offset((-4, 0, 1))
+                .color_override(brs::Color::from_rgba(150, 150, 150, 180)),
         ],
 
         "1x4x2 Bars" => vec![
+            BrickDesc::new("PB_DefaultBrick").size((5, 20, 2)).offset((0, 0, -10)),
+            BrickDesc::new("PB_DefaultMicroBrick").size((5, 20, 1)).offset((0, 0, 11)),
+            BrickDesc::new("PB_DefaultPole").size((3, 3, 1)).offset((-15, 0, -7)),
+            BrickDesc::new("PB_DefaultPole").size((3, 3, 1)).offset((-5, 0, -7)),
+            BrickDesc::new("PB_DefaultPole").size((3, 3, 1)).offset((5, 0, -7)),
+            BrickDesc::new("PB_DefaultPole").size((3, 3, 1)).offset((15, 0, -7)),
+            BrickDesc::new("PB_DefaultPole").size((2, 2, 8)).offset((15, 0, 2)),
+            BrickDesc::new("PB_DefaultPole").size((2, 2, 8)).offset((5, 0, 2)),
+            BrickDesc::new("PB_DefaultPole").size((2, 2, 8)).offset((-5, 0, 2)),
+            BrickDesc::new("PB_DefaultPole").size((2, 2, 8)).offset((-15, 0, 2)),
+        ],
+        "P Bar 4x" => vec![
             BrickDesc::new("PB_DefaultMicroBrick").size((5, 20, 2)).offset((0, 0, -10)),
             BrickDesc::new("PB_DefaultMicroBrick").size((5, 20, 1)).offset((0, 0, 11)),
             BrickDesc::new("PB_DefaultPole").size((3, 3, 1)).offset((-15, 0, -7)),
@@ -402,9 +427,15 @@ lazy_static! {
         "2x2x2 Octo Plus Horz" => BrickDesc::new("PB_DefaultStudded").size((10, 10, 10)),
         "2x2x2 Octo Plus Plus" => BrickDesc::new("PB_DefaultStudded").size((10, 10, 10)),
         "1x2 Octo Brick90" => vec![
-            BrickDesc::new("B_2x2F_Octo").direction_override(YNegative).offset((3, 0, 0)),
-            BrickDesc::new("PB_DefaultMicroBrick").size((10, 1, 10)), // TODO: replace this filler with micros to look like an octo
-            BrickDesc::new("B_2x2F_Octo").direction_override(YNegative).offset((-3, 0, 0)), 
+            BrickDesc::new("B_2x2F_Octo").lattice_rotate(true).rotation_offset(3).offset((3, 0, 0)),
+            BrickDesc::new("PB_DefaultMicroBrick").size((10, 1, 4)),
+            BrickDesc::new("PB_DefaultMicroBrick").size((4, 1, 3)).offset((0, 0, 7)),
+            BrickDesc::new("PB_DefaultMicroBrick").size((4, 1, 3)).offset((0, 0, -7)),
+            BrickDesc::new("PB_DefaultMicroWedge").size((3, 1, 3)).offset((0, -7, -7)).microwedge_rotate(true).rotation_offset(1).inverted_wedge_rotate(true).inverted_modter_rotate(true),
+            BrickDesc::new("PB_DefaultMicroWedge").size((3, 1, 3)).offset((0, 7, -7)).microwedge_rotate(true).rotation_offset(3).inverted_wedge_rotate(true).inverted_modter_rotate(true),
+            BrickDesc::new("PB_DefaultMicroWedge").size((3, 1, 3)).offset((0, -7, 7)).microwedge_rotate(true).rotation_offset(3),
+            BrickDesc::new("PB_DefaultMicroWedge").size((3, 1, 3)).offset((0, 7, 7)).microwedge_rotate(true).rotation_offset(1),
+            BrickDesc::new("B_2x2F_Octo").lattice_rotate(true).rotation_offset(3).offset((-3, 0, 0)),
         ],
         "2x3x2 Octo Offset" => vec![
             BrickDesc::new("B_2x2F_Octo").offset((0, -5, -10)),
@@ -583,6 +614,14 @@ lazy_static! {
             BrickDesc::new("PB_DefaultTile").size((10, 10, 2)).offset((-10, -10, 0)),
         ],
          // Brick_Wedge
+        "3x3F Wedge" => vec![
+            BrickDesc::new("PB_DefaultSideWedge").size((15, 15, 2)).rotation_offset(3),
+            BrickDesc::new("PB_DefaultSideWedge").size((5, 5, 2)).rotation_offset(1).offset((10, 10, 0)),
+            BrickDesc::new("PB_DefaultSideWedge").size((5, 5, 2)).rotation_offset(1).offset((-10, -10, 0)),
+            BrickDesc::new("PB_DefaultSideWedge").size((5, 5, 2)).rotation_offset(1).offset((0, 0, 0)),
+            BrickDesc::new("PB_DefaultSideWedgeTile").size((5, 5, 2)).rotation_offset(3).offset((10, 0, 0)),
+            BrickDesc::new("PB_DefaultSideWedgeTile").size((5, 5, 2)).rotation_offset(3).offset((0, -10, 0)),
+        ],
         "3x3 Wedge" => vec![
             BrickDesc::new("PB_DefaultSideWedge").size((15, 15, 6)).rotation_offset(3),
             BrickDesc::new("PB_DefaultSideWedge").size((5, 5, 6)).rotation_offset(1).offset((10, 10, 0)),
@@ -599,10 +638,30 @@ lazy_static! {
             BrickDesc::new("PB_DefaultSideWedgeTile").size((5, 5, 30)).rotation_offset(0).offset((10, 0, 0)),
             BrickDesc::new("PB_DefaultSideWedgeTile").size((5, 5, 30)).rotation_offset(0).offset((0, 10, 0)),
         ],
+        "4x4F Wedge" => vec![
+            BrickDesc::new("PB_DefaultSideWedge").size((20, 20, 2)).rotation_offset(3),
+            BrickDesc::new("PB_DefaultSideWedge").size((5, 5, 2)).rotation_offset(1).offset((15, 15, 0)),
+            BrickDesc::new("PB_DefaultSideWedge").size((5, 5, 2)).rotation_offset(1).offset((-15, -15, 0)),
+            BrickDesc::new("PB_DefaultSideWedge").size((5, 5, 2)).rotation_offset(1).offset((5, 5, 0)),
+            BrickDesc::new("PB_DefaultSideWedge").size((5, 5, 2)).rotation_offset(1).offset((-5, -5, 0)),
+            BrickDesc::new("PB_DefaultSideWedgeTile").size((5, 5, 2)).rotation_offset(3).offset((15, 5, 0)),
+            BrickDesc::new("PB_DefaultSideWedgeTile").size((5, 5, 2)).rotation_offset(3).offset((5, -5, 0)),
+            BrickDesc::new("PB_DefaultSideWedgeTile").size((5, 5, 2)).rotation_offset(3).offset((-5, -15, 0)),
+        ],
         // Brick_WedgePlus
         "1x1 Wedge" => BrickDesc::new("PB_DefaultSideWedge").size((5, 5, 6)).rotation_offset(0),
+        "1x1 Wedge Print" => BrickDesc::new("PB_DefaultSideWedge").size((5, 5, 6)).rotation_offset(0),
+        "1x2 Wedge Left" => BrickDesc::new("PB_DefaultSideWedge").size((10, 5, 6)).rotation_offset(1),
+        "2x2 Wedge Print" => BrickDesc::new("PB_DefaultSideWedge").size((10, 10, 6)).rotation_offset(0),
+        "4x4 Wedge Print" => BrickDesc::new("PB_DefaultSideWedge").size((20, 20, 6)).rotation_offset(0),
         "1x1F Wedge" => BrickDesc::new("PB_DefaultSideWedge").size((5, 5, 2)).rotation_offset(0),
         "1x1x5 Wedge" => BrickDesc::new("PB_DefaultSideWedge").size((5, 5, 30)).rotation_offset(0),
+        "4x4 Tapered Wedge" => BrickDesc::new("PB_DefaultSideWedge").size((20, 20, 6)).rotation_offset(0),
+        "8x8F Wedge" => vec![
+            BrickDesc::new("PB_DefaultSideWedge").size((35, 35, 2)).rotation_offset(3).offset((5, -5, 0)),
+            BrickDesc::new("PB_DefaultBrick").size((5, 40, 2)).offset((0, 35, 0)),
+            BrickDesc::new("PB_DefaultBrick").size((35, 5, 2)).offset((-35, -5, 0)),
+        ],
         // Brick_Pole
         "1x1F Pole" => BrickDesc::new("PB_DefaultPole").size((2, 2, 2)),
         "1x1 Pole" => BrickDesc::new("PB_DefaultPole").size((2, 2, 6)),
@@ -619,6 +678,12 @@ lazy_static! {
             BrickDesc::new("PB_DefaultMicroBrick").size((1, 5, 3)).offset((0, 4, 1)),
             BrickDesc::new("PB_DefaultMicroBrick").size((1, 5, 3)).offset((0, -4, 1)),
         ],
+        "1x2x2 Window" => vec![
+            BrickDesc::new("PB_DefaultMicroBrick").size((10, 5, 2)).offset((0, 0, -10)),
+            BrickDesc::new("PB_DefaultMicroBrick").size((10, 5, 1)).offset((0, 0, 11)),
+            BrickDesc::new("PB_DefaultMicroBrick").size((1, 5, 6)).offset((0, 9, 1)),
+            BrickDesc::new("PB_DefaultMicroBrick").size((1, 5, 6)).offset((0, -9, 1)),
+        ],
         // Brick_SmallRamps
         "1x1 Small Ramp" => vec![
             BrickDesc::new("PB_DefaultMicroBrick").size((5, 5, 2)).offset((0, 0, -2)),
@@ -627,6 +692,14 @@ lazy_static! {
         "1x1 Inverted Ramp" => vec![
             BrickDesc::new("PB_DefaultMicroBrick").size((5, 5, 2)).offset((0, 0, 2)),
             BrickDesc::new("PB_DefaultMicroWedge").size((5, 5, 2)).offset((0, 0, -2)).microwedge_rotate(true).rotation_offset(1).inverted_wedge_rotate(true).inverted_modter_rotate(true),
+        ],
+        "1x2 Small Ramp" => vec![
+            BrickDesc::new("PB_DefaultMicroBrick").size((10, 5, 2)).offset((0, 0, -2)),
+            BrickDesc::new("PB_DefaultMicroWedge").size((10, 5, 2)).offset((0, 0, 2)).microwedge_rotate(true).rotation_offset(3),
+        ],
+        "1x2 Inverted Ramp" => vec![
+            BrickDesc::new("PB_DefaultMicroBrick").size((10, 5, 2)).offset((0, 0, 2)),
+            BrickDesc::new("PB_DefaultMicroWedge").size((10, 5, 2)).offset((0, 0, -2)).microwedge_rotate(true).rotation_offset(1).inverted_wedge_rotate(true).inverted_modter_rotate(true),
         ],
         "1x2 Vertical BOTTOM Ramp" => vec![
             BrickDesc::new("PB_DefaultMicroBrick").size((5, 2, 10)).offset((3, 0, 0)),
@@ -639,6 +712,10 @@ lazy_static! {
         "1x1 Vertical BOTTOM Ramp" => vec![
             BrickDesc::new("PB_DefaultMicroBrick").size((5, 2, 6)).offset((3, 0, 0)),
             BrickDesc::new("PB_DefaultMicroWedge").size((3, 5, 6)).offset((-2, 0, 0)).microwedge_rotate(true).rotation_offset(2),
+        ],
+        "1x1 Vertical TOP Ramp" => vec![
+            BrickDesc::new("PB_DefaultMicroBrick").size((5, 2, 6)).offset((3, 0, 0)),
+            BrickDesc::new("PB_DefaultMicroWedge").size((3, 5, 6)).offset((-2, 0, 0)).microwedge_rotate(true).rotation_offset(0).inverted_wedge_rotate(true).inverted_modter_rotate(true),
         ],
         // Brick_ExtraArches
         "1x5 Half-Arch" => vec![
@@ -696,6 +773,139 @@ lazy_static! {
         "Tree Marshmallow" => vec![
             BrickDesc::new("PB_DefaultBrick").size((15, 15, 50)),
             BrickDesc::new("PB_DefaultBrick").size((20, 20, 26)).offset((0, 0, -76)).non_priority(true),
+        ],
+        // Small Bricks
+        "0.75x2F" => BrickDesc::new("PB_DefaultMicroBrick").size((10, 4, 2)).offset((1, 0, 0)),
+        "0.75x2F No Overlap" => BrickDesc::new("PB_DefaultMicroBrick").size((10, 4, 2)).offset((1, 0, 0)).non_priority(true),
+        "0.5x0.5 Edge" => BrickDesc::new("PB_DefaultMicroBrick").size((2, 2, 6)).offset((3, 3, 0)),
+        "0.5x0.5 Edge No Overlap" => BrickDesc::new("PB_DefaultMicroBrick").size((2, 2, 6)).offset((3, 3, 0)).non_priority(true),
+        "0.5x0.5F" => BrickDesc::new("PB_DefaultMicroBrick").size((2, 2, 2)).offset((3, 3, 0)),
+        "0.5x0.5F No Overlap" => BrickDesc::new("PB_DefaultMicroBrick").size((2, 2, 2)).offset((3, 3, 0)).non_priority(true),
+        "0.5x1F" => BrickDesc::new("PB_DefaultMicroBrick").size((5, 2, 2)).offset((3, 0, 0)),
+        "0.5x1F No Overlap" => BrickDesc::new("PB_DefaultMicroBrick").size((5, 2, 2)).offset((3, 0, 0)).non_priority(true),
+        "0.5x2F" => BrickDesc::new("PB_DefaultMicroBrick").size((10, 2, 2)).offset((3, 0, 0)),
+        "0.5x2F No Overlap" => BrickDesc::new("PB_DefaultMicroBrick").size((10, 2, 2)).offset((3, 0, 0)).non_priority(true),
+        "0.5x1" => BrickDesc::new("PB_DefaultMicroBrick").size((5, 2, 6)).offset((3, 0, 0)),
+        "0.5x1 No Overlap" => BrickDesc::new("PB_DefaultMicroBrick").size((5, 2, 6)).offset((3, 0, 0)).non_priority(true),
+        "0.5x2" => BrickDesc::new("PB_DefaultMicroBrick").size((10, 2, 6)).offset((3, 0, 0)),
+        "0.5x2 No Overlap" => BrickDesc::new("PB_DefaultMicroBrick").size((10, 2, 6)).offset((3, 0, 0)).non_priority(true),
+        "0.25x0.25 Edge" => BrickDesc::new("PB_DefaultMicroBrick").size((1, 1, 6)).offset((4, 4, 0)),
+        "0.25x0.25 Edge No Overlap" => BrickDesc::new("PB_DefaultMicroBrick").size((1, 1, 6)).offset((4, 4, 0)).non_priority(true),
+        "0.25x0.25F" => BrickDesc::new("PB_DefaultMicroBrick").size((1, 1, 2)).offset((4, 4, 0)),
+        "0.25x0.25F No Overlap" => BrickDesc::new("PB_DefaultMicroBrick").size((1, 1, 2)).offset((4, 4, 0)).non_priority(true),
+        "0.25x1F" => BrickDesc::new("PB_DefaultMicroBrick").size((5, 1, 2)).offset((4, 0, 0)),
+        "0.25x1F No Overlap" => BrickDesc::new("PB_DefaultMicroBrick").size((5, 1, 2)).offset((4, 0, 0)).non_priority(true),
+        "0.25x2F" => BrickDesc::new("PB_DefaultMicroBrick").size((10, 1, 2)).offset((4, 0, 0)),
+        "0.25x2F No Overlap" => BrickDesc::new("PB_DefaultMicroBrick").size((10, 1, 2)).offset((4, 0, 0)).non_priority(true),
+        "0.25x2" => BrickDesc::new("PB_DefaultMicroBrick").size((10, 1, 6)).offset((4, 0, 0)),
+        // Topless Ramps
+        "1x1 Topless Ramp x1 Inverted" => BrickDesc::new("PB_DefaultMicroWedge").size((5, 5, 6)).microwedge_rotate(true).rotation_offset(1).inverted_wedge_rotate(true).inverted_modter_rotate(true),
+        "1x1 Topless Ramp x1" => BrickDesc::new("PB_DefaultMicroWedge").size((5, 5, 6)).microwedge_rotate(true).rotation_offset(3),
+        "1x1 Topless Ramp x2 Inverted" => BrickDesc::new("PB_DefaultMicroWedge").size((5, 10, 6)).microwedge_rotate(true).rotation_offset(1).inverted_wedge_rotate(true).inverted_modter_rotate(true),
+        "1x1 Topless Ramp x2" => BrickDesc::new("PB_DefaultMicroWedge").size((5, 10, 6)).microwedge_rotate(true).rotation_offset(3),
+        "2x1 Topless Ramp x2 Inverted" => BrickDesc::new("PB_DefaultMicroWedge").size((10, 10, 6)).microwedge_rotate(true).rotation_offset(1).inverted_wedge_rotate(true).inverted_modter_rotate(true),
+        "2x1 Topless Ramp x2" => BrickDesc::new("PB_DefaultMicroWedge").size((10, 10, 6)).microwedge_rotate(true).rotation_offset(3),
+        "2x1 Topless Ramp x1 Inverted" => BrickDesc::new("PB_DefaultMicroWedge").size((10, 5, 6)).microwedge_rotate(true).rotation_offset(1).inverted_wedge_rotate(true).inverted_modter_rotate(true),
+        "2x1 Topless Ramp x1" => BrickDesc::new("PB_DefaultMicroWedge").size((10, 5, 6)).microwedge_rotate(true).rotation_offset(3),
+        "1x2 Topless Ramp x1 Inverted" => BrickDesc::new("PB_DefaultMicroWedge").size((5, 5, 12)).microwedge_rotate(true).rotation_offset(1).inverted_wedge_rotate(true).inverted_modter_rotate(true),
+        "1x2 Topless Ramp x1" => BrickDesc::new("PB_DefaultMicroWedge").size((5, 5, 12)).microwedge_rotate(true).rotation_offset(3),
+        // Glass Pane
+        "2x2F Glass Pane" => BrickDesc::new("PB_DefaultMicroBrick").size((10, 10, 1)),
+        "1x1 Glass Pane" => BrickDesc::new("PB_DefaultMicroBrick").size((1, 5, 6)),
+        "1x2 Glass Pane" => BrickDesc::new("PB_DefaultMicroBrick").size((1, 10, 6)),
+        "1x3 Glass Pane" => BrickDesc::new("PB_DefaultMicroBrick").size((1, 15, 6)),
+        "3x4 Glass Pane" => BrickDesc::new("PB_DefaultMicroBrick").size((1, 20, 18)),
+        "5x2 Glass Pane" => BrickDesc::new("PB_DefaultMicroBrick").size((1, 10, 30)),
+        "5x4 Glass Pane" => BrickDesc::new("PB_DefaultMicroBrick").size((1, 20, 30)),
+        "5x6 Glass Pane" => BrickDesc::new("PB_DefaultMicroBrick").size((1, 30, 30)),
+        "5x12 Glass Pane" => BrickDesc::new("PB_DefaultMicroBrick").size((1, 60, 30)),
+        // Optimized Cubes
+        "2x Cube 4x V" => BrickDesc::new("PB_DefaultMicroBrick").size((10, 10, 40)),
+        "4x Cube 4h" => BrickDesc::new("PB_DefaultBrick").size((80, 80, 20)),
+        "4x Cube 4x H" => BrickDesc::new("PB_DefaultMicroBrick").size((20, 80, 20)),
+        "4x Cube 2x V" => BrickDesc::new("PB_DefaultMicroBrick").size((20, 20, 40)),
+        "4x Cube 4x V" => BrickDesc::new("PB_DefaultMicroBrick").size((20, 20, 80)),
+        "4x Cube 4x4 V" => BrickDesc::new("PB_DefaultMicroBrick").size((20, 40, 40)),
+        "2x Cube 4x4 V" => BrickDesc::new("PB_DefaultMicroBrick").size((10, 20, 20)),
+        "4x8 Cube 1/2h" => BrickDesc::new("PB_DefaultMicroBrick").size((20, 40, 10)),
+        "4x16 Cube 1/2h" => BrickDesc::new("PB_DefaultMicroBrick").size((20, 80, 10)),
+        "4x Cube - No Overlap" => BrickDesc::new("PB_DefaultBrick").size((20, 20, 20)).non_priority(true),
+        "16x Cube 1/8h" => BrickDesc::new("PB_DefaultMicroBrick").size((80, 80, 10)),
+        // Cube Prints
+        "2x Cube Print" => BrickDesc::new("PB_DefaultMicroBrick").size((10, 10, 10)),
+        "6x Cube Print" => BrickDesc::new("PB_DefaultMicroBrick").size((30, 30, 30)),
+        // Paned Windows
+        "Window 1x4x5 8 pane" => vec![
+            BrickDesc::new("PB_DefaultMicroBrick").size((20, 5, 2)).offset((0, 0, -28)),
+            BrickDesc::new("PB_DefaultMicroBrick").size((20, 5, 2)).offset((0, 0, 28)),
+            BrickDesc::new("PB_DefaultMicroBrick").size((1, 5, 26)).offset((0, -19, 0)),
+            BrickDesc::new("PB_DefaultMicroBrick").size((1, 5, 26)).offset((0, 19, 0)),
+            BrickDesc::new("PB_DefaultMicroBrick").size((1, 2, 26)).offset((2, -1, 0)).color_override(Color::from_rgba(255, 255, 255, 255)),
+            BrickDesc::new("PB_DefaultMicroBrick").size((1, 2, 26)).offset((2, 1, 0)).color_override(Color::from_rgba(255, 255, 255, 255)),
+            BrickDesc::new("PB_DefaultMicroBrick").size((1, 2, 26)).offset((2, -17, 0)).color_override(Color::from_rgba(255, 255, 255, 255)),
+            BrickDesc::new("PB_DefaultMicroBrick").size((1, 2, 26)).offset((2, 17, 0)).color_override(Color::from_rgba(255, 255, 255, 255)),
+            BrickDesc::new("PB_DefaultMicroBrick").size((7, 2, 1)).offset((2, -9, -25)).color_override(Color::from_rgba(255, 255, 255, 255)),
+            BrickDesc::new("PB_DefaultMicroBrick").size((7, 2, 1)).offset((2, 9, -25)).color_override(Color::from_rgba(255, 255, 255, 255)),
+            BrickDesc::new("PB_DefaultMicroBrick").size((7, 2, 1)).offset((2, -9, 25)).color_override(Color::from_rgba(255, 255, 255, 255)),
+            BrickDesc::new("PB_DefaultMicroBrick").size((7, 2, 1)).offset((2, 9, 25)).color_override(Color::from_rgba(255, 255, 255, 255)),
+            BrickDesc::new("PB_DefaultMicroBrick").size((7, 2, 1)).offset((2, -9, -12)).color_override(Color::from_rgba(255, 255, 255, 255)),
+            BrickDesc::new("PB_DefaultMicroBrick").size((7, 2, 1)).offset((2, 9, -12)).color_override(Color::from_rgba(255, 255, 255, 255)),
+            BrickDesc::new("PB_DefaultMicroBrick").size((7, 2, 1)).offset((2, -9, 12)).color_override(Color::from_rgba(255, 255, 255, 255)),
+            BrickDesc::new("PB_DefaultMicroBrick").size((7, 2, 1)).offset((2, 9, 12)).color_override(Color::from_rgba(255, 255, 255, 255)),
+            BrickDesc::new("PB_DefaultMicroBrick").size((7, 2, 1)).offset((2, -9, 0)).color_override(Color::from_rgba(255, 255, 255, 255)),
+            BrickDesc::new("PB_DefaultMicroBrick").size((7, 2, 1)).offset((2, 9, 0)).color_override(Color::from_rgba(255, 255, 255, 255)),
+        ],
+        "Window 1x4x5 6 pane" => vec![
+            BrickDesc::new("PB_DefaultMicroBrick").size((20, 5, 2)).offset((0, 0, -28)),
+            BrickDesc::new("PB_DefaultMicroBrick").size((20, 5, 2)).offset((0, 0, 28)),
+            BrickDesc::new("PB_DefaultMicroBrick").size((1, 5, 26)).offset((0, -19, 0)),
+            BrickDesc::new("PB_DefaultMicroBrick").size((1, 5, 26)).offset((0, 19, 0)),
+            BrickDesc::new("PB_DefaultMicroBrick").size((1, 2, 26)).offset((2, -1, 0)).color_override(Color::from_rgba(255, 255, 255, 255)),
+            BrickDesc::new("PB_DefaultMicroBrick").size((1, 2, 26)).offset((2, 1, 0)).color_override(Color::from_rgba(255, 255, 255, 255)),
+            BrickDesc::new("PB_DefaultMicroBrick").size((1, 2, 26)).offset((2, -17, 0)).color_override(Color::from_rgba(255, 255, 255, 255)),
+            BrickDesc::new("PB_DefaultMicroBrick").size((1, 2, 26)).offset((2, 17, 0)).color_override(Color::from_rgba(255, 255, 255, 255)),
+            BrickDesc::new("PB_DefaultMicroBrick").size((7, 2, 1)).offset((2, -9, -25)).color_override(Color::from_rgba(255, 255, 255, 255)),
+            BrickDesc::new("PB_DefaultMicroBrick").size((7, 2, 1)).offset((2, 9, -25)).color_override(Color::from_rgba(255, 255, 255, 255)),
+            BrickDesc::new("PB_DefaultMicroBrick").size((7, 2, 1)).offset((2, -9, 25)).color_override(Color::from_rgba(255, 255, 255, 255)),
+            BrickDesc::new("PB_DefaultMicroBrick").size((7, 2, 1)).offset((2, 9, 25)).color_override(Color::from_rgba(255, 255, 255, 255)),
+            BrickDesc::new("PB_DefaultMicroBrick").size((7, 2, 1)).offset((2, -9, -8)).color_override(Color::from_rgba(255, 255, 255, 255)),
+            BrickDesc::new("PB_DefaultMicroBrick").size((7, 2, 1)).offset((2, 9, -8)).color_override(Color::from_rgba(255, 255, 255, 255)),
+            BrickDesc::new("PB_DefaultMicroBrick").size((7, 2, 1)).offset((2, -9, 8)).color_override(Color::from_rgba(255, 255, 255, 255)),
+            BrickDesc::new("PB_DefaultMicroBrick").size((7, 2, 1)).offset((2, 9, 8)).color_override(Color::from_rgba(255, 255, 255, 255)),
+        ],
+        "Window 1x4x4 6 pane" => vec![
+            BrickDesc::new("PB_DefaultMicroBrick").size((20, 5, 2)).offset((0, 0, -22)),
+            BrickDesc::new("PB_DefaultMicroBrick").size((20, 5, 2)).offset((0, 0, 22)),
+            BrickDesc::new("PB_DefaultMicroBrick").size((1, 5, 20)).offset((0, -19, 0)),
+            BrickDesc::new("PB_DefaultMicroBrick").size((1, 5, 20)).offset((0, 19, 0)),
+            BrickDesc::new("PB_DefaultMicroBrick").size((1, 2, 20)).offset((2, -1, 0)).color_override(Color::from_rgba(255, 255, 255, 255)),
+            BrickDesc::new("PB_DefaultMicroBrick").size((1, 2, 20)).offset((2, 1, 0)).color_override(Color::from_rgba(255, 255, 255, 255)),
+            BrickDesc::new("PB_DefaultMicroBrick").size((1, 2, 20)).offset((2, -17, 0)).color_override(Color::from_rgba(255, 255, 255, 255)),
+            BrickDesc::new("PB_DefaultMicroBrick").size((1, 2, 20)).offset((2, 17, 0)).color_override(Color::from_rgba(255, 255, 255, 255)),
+            BrickDesc::new("PB_DefaultMicroBrick").size((7, 2, 1)).offset((2, -9, -19)).color_override(Color::from_rgba(255, 255, 255, 255)),
+            BrickDesc::new("PB_DefaultMicroBrick").size((7, 2, 1)).offset((2, 9, -19)).color_override(Color::from_rgba(255, 255, 255, 255)),
+            BrickDesc::new("PB_DefaultMicroBrick").size((7, 2, 1)).offset((2, -9, 19)).color_override(Color::from_rgba(255, 255, 255, 255)),
+            BrickDesc::new("PB_DefaultMicroBrick").size((7, 2, 1)).offset((2, 9, 19)).color_override(Color::from_rgba(255, 255, 255, 255)),
+            BrickDesc::new("PB_DefaultMicroBrick").size((7, 2, 1)).offset((2, -9, -6)).color_override(Color::from_rgba(255, 255, 255, 255)),
+            BrickDesc::new("PB_DefaultMicroBrick").size((7, 2, 1)).offset((2, 9, -6)).color_override(Color::from_rgba(255, 255, 255, 255)),
+            BrickDesc::new("PB_DefaultMicroBrick").size((7, 2, 1)).offset((2, -9, 6)).color_override(Color::from_rgba(255, 255, 255, 255)),
+            BrickDesc::new("PB_DefaultMicroBrick").size((7, 2, 1)).offset((2, 9, 6)).color_override(Color::from_rgba(255, 255, 255, 255)),
+        ],
+        "Window 1x4x4 4 pane" => vec![
+            BrickDesc::new("PB_DefaultMicroBrick").size((20, 5, 2)).offset((0, 0, -22)),
+            BrickDesc::new("PB_DefaultMicroBrick").size((20, 5, 2)).offset((0, 0, 22)),
+            BrickDesc::new("PB_DefaultMicroBrick").size((1, 5, 20)).offset((0, -19, 0)),
+            BrickDesc::new("PB_DefaultMicroBrick").size((1, 5, 20)).offset((0, 19, 0)),
+            BrickDesc::new("PB_DefaultMicroBrick").size((1, 2, 20)).offset((2, -1, 0)).color_override(Color::from_rgba(255, 255, 255, 255)),
+            BrickDesc::new("PB_DefaultMicroBrick").size((1, 2, 20)).offset((2, 1, 0)).color_override(Color::from_rgba(255, 255, 255, 255)),
+            BrickDesc::new("PB_DefaultMicroBrick").size((1, 2, 20)).offset((2, -17, 0)).color_override(Color::from_rgba(255, 255, 255, 255)),
+            BrickDesc::new("PB_DefaultMicroBrick").size((1, 2, 20)).offset((2, 17, 0)).color_override(Color::from_rgba(255, 255, 255, 255)),
+            BrickDesc::new("PB_DefaultMicroBrick").size((7, 2, 1)).offset((2, -9, -19)).color_override(Color::from_rgba(255, 255, 255, 255)),
+            BrickDesc::new("PB_DefaultMicroBrick").size((7, 2, 1)).offset((2, 9, -19)).color_override(Color::from_rgba(255, 255, 255, 255)),
+            BrickDesc::new("PB_DefaultMicroBrick").size((7, 2, 1)).offset((2, -9, 19)).color_override(Color::from_rgba(255, 255, 255, 255)),
+            BrickDesc::new("PB_DefaultMicroBrick").size((7, 2, 1)).offset((2, 9, 19)).color_override(Color::from_rgba(255, 255, 255, 255)),
+            BrickDesc::new("PB_DefaultMicroBrick").size((7, 2, 1)).offset((2, -9, 0)).color_override(Color::from_rgba(255, 255, 255, 255)),
+            BrickDesc::new("PB_DefaultMicroBrick").size((7, 2, 1)).offset((2, 9, 0)).color_override(Color::from_rgba(255, 255, 255, 255)),
         ],
     ];
 
@@ -836,7 +1046,7 @@ lazy_static! {
             };
             Some(vec![BrickDesc::new("PB_DefaultBrick").size((size * 5, size * 5, height))])
         },
-        r"^\s?(?P<size>\d+)x (?:(?P<cube>Cube)|(?P<ramp>Ramp)|(?P<cornera>CornerA|CorA)|(?P<cornerb>CornerB|CorB)|(?P<cornerc>CornerC|CorC)|(?P<cornerd>CornerD|CorD)|(?P<wedge>Wedge))(?:(?P<steep> Steep)|(?P<three_quarters> 3/4h)|(?P<half> 1/2h)|(?P<quarter> 1/4h)| )?(?P<inv> Inv.)?$" => |captures, _| {
+        r"^\s?(?P<size>\d+)x (?:(?P<cube>Cube)|(?P<ramp>Ramp)|(?P<cornera>CornerA|CorA)|(?P<cornerb>CornerB|CorB)|(?P<cornerc>CornerC|CorC)|(?P<cornerd>CornerD|CorD)|(?P<wedge>Wedge))(?P<inv2> Inv)?(?:(?P<steep> Steep)|(?P<three_quarters> 3/4h)|(?P<half> 1/2h)|(?P<quarter> 1/4h)| )?(?P<inv> Inv.)?$" => |captures, _| {
             let size: u32 = captures.name("size").unwrap().as_str().parse().ok()?;
             let height = if captures.name("steep").is_some() {
                 size * 2 * 5
@@ -867,7 +1077,7 @@ lazy_static! {
                 unreachable!()
             };
             let offset = (0, 0, 0);
-            let (direction, imr) = if captures.name("inv").is_some() {
+            let (direction, imr) = if captures.name("inv").is_some() || captures.name("inv2").is_some() {
                 if captures.name("ramp").is_some() {
                     rotation += 2;
                     (ZNegative, false)
@@ -878,6 +1088,11 @@ lazy_static! {
             } else {
                 (ZPositive, false)
             };
+
+            if (size == 2 && captures.name("wedge").is_some()) ||
+                (size == 4 && captures.name("wedge").is_some() && height != size * 5) {
+                rotation += 1;
+            }
 
             Some(vec![BrickDesc::new(asset)
                 .size((size * 5, size * 5, height))
