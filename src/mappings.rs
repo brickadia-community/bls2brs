@@ -15,10 +15,12 @@ lazy_static! {
         "2x2f/blank",
     ].into_iter().collect();
 
-    static ref BRICK_ROAD_LANE: BrickDesc = BrickDesc::new("PB_DefaultTile")
-        .color_override(brs::Color::from_rgba(51, 51, 51, 255));
-    static ref BRICK_ROAD_STRIPE: BrickDesc = BrickDesc::new("PB_DefaultTile")
+    static ref BRICK_ROAD_LANE: BrickDesc = BrickDesc::new("PB_DefaultMicroBrick")
+        .color_override(brs::Color::from_rgba(11, 11, 11, 255));
+    static ref BRICK_ROAD_STRIPE: BrickDesc = BrickDesc::new("PB_DefaultMicroBrick")
         .color_override(brs::Color::from_rgba(254, 254, 232, 255));
+    static ref BRICK_ROAD_CENTER: BrickDesc = BrickDesc::new("PB_DefaultMicroBrick")
+        .color_override(brs::Color::from_rgba(250, 200, 10, 255));
     static ref GENERIC_DOOR: BrickMapping = vec![
         //frame
         BrickDesc::new("PB_DefaultMicroBrick").size((20, 5, 1)).offset((0, 0, -35)),
@@ -313,11 +315,13 @@ lazy_static! {
             BrickDesc::new("PB_DefaultBrick").size((9*5, 32*5, 2)).offset((0, -115, 0)),
             BrickDesc::new("PB_DefaultBrick").size((9*5, 32*5, 2)).offset((0, 115, 0)),
             // left and right stripes
-            BRICK_ROAD_STRIPE.clone().size((1*5, 32*5, 2)).offset((0, -65, 0)),
-            BRICK_ROAD_STRIPE.clone().size((1*5, 32*5, 2)).offset((0, 65, 0)),
+            BRICK_ROAD_STRIPE.clone().size((4, 32*5, 2)).offset((0, -66, 0)),
+            BRICK_ROAD_STRIPE.clone().size((4, 32*5, 2)).offset((0, 66, 0)),
             // lanes
-            BRICK_ROAD_LANE.clone().size((6*5, 32*5, 2)).offset((0, -6*5, 0)),
-            BRICK_ROAD_LANE.clone().size((6*5, 32*5, 2)).offset((0, 6*5, 0)),
+            BRICK_ROAD_LANE.clone().size((29, 32*5, 2)).offset((0, -33, 0)),
+            BRICK_ROAD_LANE.clone().size((29, 32*5, 2)).offset((0, 33, 0)),
+            // center strip
+            BRICK_ROAD_CENTER.clone().size((4, 32*5, 2))
         ],
 
         // Orientations are relative to this camera position on Beta City:
@@ -326,14 +330,17 @@ lazy_static! {
             BrickDesc::new("PB_DefaultBrick").size((9*5, 32*5, 2)).offset((0, -115, 0)), // top
             BrickDesc::new("PB_DefaultBrick").size((9*5, 9*5, 2)).offset((-115, 115, 0)), // bottom left
             BrickDesc::new("PB_DefaultBrick").size((9*5, 9*5, 2)).offset((115, 115, 0)), // bottom right
-            BRICK_ROAD_STRIPE.clone().size((1*5, 32*5, 2)).offset((0, -65, 0)), // straight top
-            BRICK_ROAD_STRIPE.clone().size((1*5, 32*5, 2)).offset((0, 65, 0)), // straight bottom
-            BRICK_ROAD_STRIPE.clone().size((1*5, 9*5, 2)).rotation_offset(0).offset((-13*5, 23*5, 0)), // bottom left
-            BRICK_ROAD_STRIPE.clone().size((1*5, 9*5, 2)).rotation_offset(0).offset((13*5, 23*5, 0)), // bottom right
-            BRICK_ROAD_LANE.clone().size((6*5, 32*5, 2)).offset((0, -6*5, 0)), // straight top
-            BRICK_ROAD_LANE.clone().size((6*5, 32*5, 2)).offset((0, 6*5, 0)), // straight bottom
-            BRICK_ROAD_LANE.clone().size((6*5, 9*5, 2)).rotation_offset(0).offset((-6*5, 23*5, 0)), // bottom left
-            BRICK_ROAD_LANE.clone().size((6*5, 9*5, 2)).rotation_offset(0).offset((6*5, 23*5, 0)), // bottom right
+            BRICK_ROAD_STRIPE.clone().size((4, 32*5, 2)).offset((0, -66, 0)), // straight top
+            BRICK_ROAD_STRIPE.clone().size((4, 32*5, 2)).offset((0, 66, 0)), // straight bottom
+            BRICK_ROAD_STRIPE.clone().size((4, 9*5, 2)).rotation_offset(0).offset((-66, 23*5, 0)), // bottom left
+            BRICK_ROAD_STRIPE.clone().size((4, 9*5, 2)).rotation_offset(0).offset((66, 23*5, 0)), // bottom right
+            BRICK_ROAD_LANE.clone().size((29, 32*5, 2)).offset((0, -33, 0)), // straight top
+            BRICK_ROAD_LANE.clone().size((29, 32*5, 2)).offset((0, 33, 0)), // straight bottom
+            BRICK_ROAD_LANE.clone().size((29, 9*5, 2)).rotation_offset(0).offset((-33, 23*5, 0)), // bottom left
+            BRICK_ROAD_LANE.clone().size((29, 9*5, 2)).rotation_offset(0).offset((33, 23*5, 0)), // bottom right
+            BRICK_ROAD_LANE.clone().size((2, 4, 2)).offset((0, 72, 0)),
+            BRICK_ROAD_CENTER.clone().size((4, 32*5, 2)),
+            BRICK_ROAD_CENTER.clone().size((43, 4, 2)).offset((0, 117, 0)),
         ],
 
         // Orientations are relative to this camera position on Beta City:
@@ -343,34 +350,31 @@ lazy_static! {
             BrickDesc::new("PB_DefaultBrick").size((9*5, 9*5, 2)).offset((23*5, -23*5, 0)), // top right
             BrickDesc::new("PB_DefaultBrick").size((9*5, 9*5, 2)).offset((-23*5, 23*5, 0)), // bottom left
             BrickDesc::new("PB_DefaultBrick").size((9*5, 9*5, 2)).offset((23*5, 23*5, 0)), // bottom right
-            BRICK_ROAD_STRIPE.clone().size((1*5, 1*5, 2)).offset((13*5, -13*5, 0)), // corner top left
-            BRICK_ROAD_STRIPE.clone().size((1*5, 1*5, 2)).offset((13*5, 13*5, 0)), // corner right right
-            BRICK_ROAD_STRIPE.clone().size((1*5, 1*5, 2)).offset((-13*5, -13*5, 0)), // corner bottom left
-            BRICK_ROAD_STRIPE.clone().size((1*5, 1*5, 2)).offset((-13*5, 13*5, 0)), // corner bottom right
-            BRICK_ROAD_STRIPE.clone().size((1*5, 12*5, 2)).rotation_offset(0).offset((-13*5, 0, 0)), // inner bottom
-            BRICK_ROAD_STRIPE.clone().size((1*5, 12*5, 2)).rotation_offset(0).offset((13*5, 0, 0)), // inner top
-            BRICK_ROAD_STRIPE.clone().size((1*5, 12*5, 2)).offset((0, -13*5, 0)), // inner left
-            BRICK_ROAD_STRIPE.clone().size((1*5, 12*5, 2)).offset((0, 13*5, 0)), // inner right
-            BRICK_ROAD_STRIPE.clone().size((1*5, 9*5, 2)).rotation_offset(0).offset((-13*5, 23*5, 0)), // right bottom
-            BRICK_ROAD_STRIPE.clone().size((1*5, 9*5, 2)).rotation_offset(0).offset((13*5, 23*5, 0)), // right top
-            BRICK_ROAD_STRIPE.clone().size((1*5, 9*5, 2)).rotation_offset(0).offset((-13*5, -23*5, 0)), // left bottom
-            BRICK_ROAD_STRIPE.clone().size((1*5, 9*5, 2)).rotation_offset(0).offset((13*5, -23*5, 0)), // left top
-            BRICK_ROAD_STRIPE.clone().size((1*5, 9*5, 2)).offset((-23*5, -13*5, 0)), // bottom left
-            BRICK_ROAD_STRIPE.clone().size((1*5, 9*5, 2)).offset((-23*5, 13*5, 0)), // bottom right
-            BRICK_ROAD_STRIPE.clone().size((1*5, 9*5, 2)).offset((23*5, -13*5, 0)), // top left
-            BRICK_ROAD_STRIPE.clone().size((1*5, 9*5, 2)).offset((23*5, 13*5, 0)), // top right
-            BRICK_ROAD_LANE.clone().size((6*5, 6*5, 2)).offset((-6*5, -6*5, 0)), // inner bottom left
-            BRICK_ROAD_LANE.clone().size((6*5, 6*5, 2)).offset((-6*5, 6*5, 0)), // inner bottom right
-            BRICK_ROAD_LANE.clone().size((6*5, 6*5, 2)).offset((6*5, -6*5, 0)), // inner top left
-            BRICK_ROAD_LANE.clone().size((6*5, 6*5, 2)).offset((6*5, 6*5, 0)), // inner top right
-            BRICK_ROAD_LANE.clone().size((6*5, 9*5, 2)).rotation_offset(0).offset((-6*5, 23*5, 0)), // right bottom
-            BRICK_ROAD_LANE.clone().size((6*5, 9*5, 2)).rotation_offset(0).offset((6*5, 23*5, 0)), // right top
-            BRICK_ROAD_LANE.clone().size((6*5, 9*5, 2)).rotation_offset(0).offset((-6*5, -23*5, 0)), // left bottom
-            BRICK_ROAD_LANE.clone().size((6*5, 9*5, 2)).rotation_offset(0).offset((6*5, -23*5, 0)), // left top
-            BRICK_ROAD_LANE.clone().size((6*5, 9*5, 2)).offset((-23*5, -6*5, 0)), // bottom left
-            BRICK_ROAD_LANE.clone().size((6*5, 9*5, 2)).offset((-23*5, 6*5, 0)), // bottom right
-            BRICK_ROAD_LANE.clone().size((6*5, 9*5, 2)).offset((23*5, -6*5, 0)), // top left
-            BRICK_ROAD_LANE.clone().size((6*5, 9*5, 2)).offset((23*5, 6*5, 0)), // top right
+            BRICK_ROAD_STRIPE.clone().size((4, 160, 2)).rotation_offset(0).offset((-66, 0, 0)), // inner bottom
+            BRICK_ROAD_STRIPE.clone().size((4, 160, 2)).rotation_offset(0).offset((66, 0, 0)), // inner top
+            BRICK_ROAD_STRIPE.clone().size((4, 62, 2)).offset((0, -66, 0)), // inner left
+            BRICK_ROAD_STRIPE.clone().size((4, 62, 2)).offset((0, 66, 0)), // inner right
+            BRICK_ROAD_STRIPE.clone().size((4, 9*5, 2)).offset((-23*5, -66, 0)), // bottom left
+            BRICK_ROAD_STRIPE.clone().size((4, 9*5, 2)).offset((-23*5, 66, 0)), // bottom right
+            BRICK_ROAD_STRIPE.clone().size((4, 9*5, 2)).offset((23*5, -66, 0)), // top left
+            BRICK_ROAD_STRIPE.clone().size((4, 9*5, 2)).offset((23*5, 66, 0)), // top right
+            BRICK_ROAD_LANE.clone().size((62, 62, 2)), // inner
+            BRICK_ROAD_LANE.clone().size((29, 9*5, 2)).rotation_offset(0).offset((-33, 23*5, 0)), // right bottom
+            BRICK_ROAD_LANE.clone().size((29, 9*5, 2)).rotation_offset(0).offset((33, 23*5, 0)), // right top
+            BRICK_ROAD_LANE.clone().size((29, 9*5, 2)).rotation_offset(0).offset((-33, -23*5, 0)), // left bottom
+            BRICK_ROAD_LANE.clone().size((29, 9*5, 2)).rotation_offset(0).offset((33, -23*5, 0)), // left top
+            BRICK_ROAD_LANE.clone().size((29, 9*5, 2)).offset((-23*5, -33, 0)), // bottom left
+            BRICK_ROAD_LANE.clone().size((29, 9*5, 2)).offset((-23*5, 33, 0)), // bottom right
+            BRICK_ROAD_LANE.clone().size((29, 9*5, 2)).offset((23*5, -33, 0)), // top left
+            BRICK_ROAD_LANE.clone().size((29, 9*5, 2)).offset((23*5, 33, 0)), // top right
+            BRICK_ROAD_LANE.clone().size((2, 4, 2)).offset((0, 72, 0)),
+            BRICK_ROAD_LANE.clone().size((2, 4, 2)).offset((0, -72, 0)),
+            BRICK_ROAD_LANE.clone().size((4, 2, 2)).offset((72, 0, 0)),
+            BRICK_ROAD_LANE.clone().size((4, 2, 2)).offset((-72, 0, 0)),
+            BRICK_ROAD_CENTER.clone().size((43, 4, 2)).offset((0, 117, 0)),
+            BRICK_ROAD_CENTER.clone().size((43, 4, 2)).offset((0, -117, 0)),
+            BRICK_ROAD_CENTER.clone().size((4, 43, 2)).offset((117, 0, 0)),
+            BRICK_ROAD_CENTER.clone().size((4, 43, 2)).offset((-117, 0, 0)),
         ],
 
         // Orientations are relative to this camera position on Beta City:
@@ -381,18 +385,21 @@ lazy_static! {
             BrickDesc::new("PB_DefaultBrick").size((9*5, 9*5, 2)).offset((115, -115, 0)), // bottom right
             BrickDesc::new("PB_DefaultBrick").size((9*5, 23*5, 2)).rotation_offset(0).offset((115, 45, 0)), // bottom left
             BrickDesc::new("PB_DefaultBrick").size((9*5, 23*5, 2)).offset((-45, -115, 0)), // top right
-            BRICK_ROAD_STRIPE.clone().size((1*5, 9*5, 2)).offset((-115, 65, 0)), // inner right
-            BRICK_ROAD_STRIPE.clone().size((1*5, 9*5, 2)).rotation_offset(0).offset((-65, 115, 0)), // inner bottom
-            BRICK_ROAD_STRIPE.clone().size((1*5, 22*5, 2)).offset((-50, -65, 0)), // top right
-            BRICK_ROAD_STRIPE.clone().size((1*5, 22*5, 2)).rotation_offset(0).offset((65, 50, 0)), // bottom left
-            BRICK_ROAD_STRIPE.clone().size((1*5, 1*5, 2)).offset((65, -65, 0)), // bottom right
-            BRICK_ROAD_STRIPE.clone().size((1*5, 1*5, 2)).rotation_offset(0).offset((-65, 65, 0)), // inner bottom right
-            BRICK_ROAD_LANE.clone().size((6*5, 10*5, 2)).offset((-22*5, 6*5, 0)), // top left
-            BRICK_ROAD_LANE.clone().size((6*5, 16*5, 2)).offset((-16*5, -6*5, 0)), // top right
-            BRICK_ROAD_LANE.clone().size((6*5, 16*5, 2)).rotation_offset(0).offset((6*5, 16*5, 0)), // bottom left
-            BRICK_ROAD_LANE.clone().size((6*5, 10*5, 2)).rotation_offset(0).offset((-6*5, 22*5, 0)), // left top
-            BRICK_ROAD_LANE.clone().size((6*5, 6*5, 2)).offset((-6*5, 6*5, 0)), // inner top left
-            BRICK_ROAD_LANE.clone().size((6*5, 6*5, 2)).offset((6*5, -6*5, 0)), // inner bottom right
+            BRICK_ROAD_STRIPE.clone().size((4, 9*5, 2)).offset((-115, 66, 0)), // inner right
+            BRICK_ROAD_STRIPE.clone().size((4, 9*5, 2)).rotation_offset(0).offset((-66, 115, 0)), // inner bottom
+            BRICK_ROAD_STRIPE.clone().size((4, 111, 2)).offset((-49, -66, 0)), // top right
+            BRICK_ROAD_STRIPE.clone().size((4, 111, 2)).rotation_offset(0).offset((66, 49, 0)), // bottom left
+            BRICK_ROAD_STRIPE.clone().size((4, 4, 2)).offset((66, -66, 0)), // bottom right
+            BRICK_ROAD_STRIPE.clone().size((4, 4, 2)).rotation_offset(0).offset((-66, 66, 0)), // inner bottom right
+            BRICK_ROAD_LANE.clone().size((29, 49, 2)).offset((-111, 33, 0)), // top left
+            BRICK_ROAD_LANE.clone().size((29, 82, 2)).offset((-78, -33, 0)), // top right
+            BRICK_ROAD_LANE.clone().size((29, 82, 2)).rotation_offset(0).offset((33, 78, 0)), // bottom left
+            BRICK_ROAD_LANE.clone().size((29, 49, 2)).rotation_offset(0).offset((-33, 111, 0)), // left top
+            BRICK_ROAD_LANE.clone().size((29, 29, 2)).offset((-33, 33, 0)), // inner top left
+            BRICK_ROAD_LANE.clone().size((29, 29, 2)).offset((33, -33, 0)), // inner bottom right
+            BRICK_ROAD_CENTER.clone().size((4, 4, 2)),
+            BRICK_ROAD_CENTER.clone().size((4, 78, 2)).offset((-82, 0, 0)),
+            BRICK_ROAD_CENTER.clone().size((78, 4, 2)).offset((0, 82, 0)),
         ],
 
         // 1RandomBrickPack
