@@ -182,6 +182,23 @@ lazy_static! {
                 .color_override(brs::Color::from_rgba(150, 150, 150, 180)).nocollide(),
         ],
 
+        "Checkpoint" => vec![
+            BrickDesc::new("PB_DefaultSmoothTile").size((5, 10, 2)).offset((5, 10, -28)),
+            BrickDesc::new("PB_DefaultSmoothTile").size((5, 10, 2)).offset((-5, -10, -28)),
+            BrickDesc::new("PB_DefaultSmoothTile").size((10, 5, 2)).offset((10, -5, -28)),
+            BrickDesc::new("PB_DefaultSmoothTile").size((10, 5, 2)).offset((-10, 5, -28)),
+            BrickDesc::new("PB_DefaultMicroWedge").size((2, 5, 2)).offset((0, -3, -28)).rotation_offset(1),
+            BrickDesc::new("PB_DefaultMicroWedge").size((5, 2, 2)).offset((0, 3, -28)).rotation_offset(2),
+            BrickDesc::new("PB_DefaultMicroWedge").size((2, 5, 2)).offset((0, -3, -28)).rotation_offset(3)
+                .color_override(brs::Color::from_rgba(254, 254, 232, 255)),
+            BrickDesc::new("PB_DefaultMicroWedge").size((5, 2, 2)).offset((0, 3, -28)).rotation_offset(0)
+                .color_override(brs::Color::from_rgba(254, 254, 232, 255)),
+            BrickDesc::new("PB_DefaultMicroBrick").size((1, 5, 2)).offset((0, 0, -28))
+                .color_override(brs::Color::from_rgba(254, 254, 232, 255)),
+            BrickDesc::new("PB_DefaultMicroBrick").size((15, 15, 28)).offset((0, 0, 2))
+                .color_override(brs::Color::from_rgba(100, 100, 100, 180)).nocollide(),
+        ],
+
         "2x2x5 Lattice" => vec![
             // Caps
             BrickDesc::new("PB_DefaultSmoothTile").size((10, 10, 2)).offset((0, 0, -28)),
