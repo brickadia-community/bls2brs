@@ -171,6 +171,19 @@ lazy_static! {
             BrickDesc::new("PB_DefaultPole").size((2, 2, 8)).offset((-15, 0, 2)),
         ],
 
+        "Vehicle Spawn" => vec![
+            BrickDesc::new("PB_DefaultSmoothTile").size((10, 30, 2)).offset((10, 30, 0)),
+            BrickDesc::new("PB_DefaultSmoothTile").size((10, 30, 2)).offset((-10, -30, 0)),
+            BrickDesc::new("PB_DefaultSmoothTile").size((30, 10, 2)).offset((30, -10, 0)),
+            BrickDesc::new("PB_DefaultSmoothTile").size((30, 10, 2)).offset((-30, 10, 0)),
+            BrickDesc::new("PB_DefaultMicroWedge").size((10, 20, 2)).offset((0, -10, 0)).rotation_offset(1),
+            BrickDesc::new("PB_DefaultMicroWedge").size((20, 10, 2)).offset((0, 10, 0)).rotation_offset(2),
+            BrickDesc::new("PB_DefaultMicroWedge").size((10, 20, 2)).offset((0, -10, 0)).rotation_offset(3)
+                .color_override(brs::Color::from_rgba(0, 0, 0, 255)),
+            BrickDesc::new("PB_DefaultMicroWedge").size((20, 10, 2)).offset((0, 10, 0)).rotation_offset(0)
+                .color_override(brs::Color::from_rgba(0, 0, 0, 255)),
+        ],
+
         "2x2x5 Lattice" => vec![
             // Caps
             BrickDesc::new("PB_DefaultMicroBrick").size((10, 10, 2)).offset((0, 0, -28)),
