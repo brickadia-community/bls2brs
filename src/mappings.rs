@@ -138,7 +138,7 @@ lazy_static! {
         ],
 
         "1x4x5 Window" => vec![
-            BrickDesc::new("PB_DefaultMicroBrick").size((5, 20, 2)).rotation_offset(0).offset((0, 0, -28)),
+            BrickDesc::new("PB_DefaultSmoothTile").size((5, 20, 2)).rotation_offset(0).offset((0, 0, -28)),
             BrickDesc::new("PB_DefaultMicroBrick").size((5, 20, 1)).rotation_offset(0).offset((0, 0, 29)),
             BrickDesc::new("PB_DefaultMicroBrick").size((5, 1, 27)).rotation_offset(0).offset((0, 19, 1)),
             BrickDesc::new("PB_DefaultMicroBrick").size((5, 1, 27)).rotation_offset(0).offset((0, -19, 1)),
