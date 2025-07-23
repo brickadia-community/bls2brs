@@ -15,6 +15,8 @@ lazy_static! {
         "2x2f/blank",
     ].into_iter().collect();
 
+    static ref WINDOW_COLOR: brs::Color = brs::Color::from_rgba(150, 150, 150, 180);
+
     static ref BRICK_ROAD_LANE: BrickDesc = BrickDesc::new("PB_DefaultMicroBrick")
         .color_override(brs::Color::from_rgba(11, 11, 11, 255));
     static ref BRICK_ROAD_STRIPE: BrickDesc = BrickDesc::new("PB_DefaultMicroBrick")
@@ -124,7 +126,7 @@ lazy_static! {
             BrickDesc::new("PB_DefaultMicroBrick").size((5, 1, 27)).rotation_offset(0).offset((0, 19, 1)),
             BrickDesc::new("PB_DefaultMicroBrick").size((5, 1, 27)).rotation_offset(0).offset((0, -19, 1)),
             BrickDesc::new("PB_DefaultMicroBrick").size((1, 18, 27)).rotation_offset(0).offset((-4, 0, 1))
-                .color_override(brs::Color::from_rgba(150, 150, 150, 180)),
+                .color_override(WINDOW_COLOR.clone()),
         ],
 
         "1x4x2 Bars" => vec![
@@ -890,18 +892,79 @@ lazy_static! {
         "1x1 Thick Pole" => BrickDesc::new("PB_DefaultPole").size((4, 4, 6)),
         "1x2 Thick Pole" => BrickDesc::new("PB_DefaultPole").size((4, 4, 18)),
         "1x3 Thick Pole" => BrickDesc::new("PB_DefaultPole").size((4, 4, 18)),
-        // Brick_Window
+
+        //==================================================================================
+        // Brick_Window by Tophius (Fourteen new window bricks!)
+        //==================================================================================
         "1x1x1 Window" => vec![
             BrickDesc::new("PB_DefaultMicroBrick").size((5, 5, 2)).offset((0, 0, -4)),
             BrickDesc::new("PB_DefaultMicroBrick").size((5, 5, 1)).offset((0, 0, 5)),
             BrickDesc::new("PB_DefaultMicroBrick").size((1, 5, 3)).offset((0, 4, 1)),
             BrickDesc::new("PB_DefaultMicroBrick").size((1, 5, 3)).offset((0, -4, 1)),
+            BrickDesc::new("PB_DefaultMicroBrick").size((3, 1, 3)).offset((-4, 0, 1)).color_override(WINDOW_COLOR.clone()),
+        ],
+        "1x1x2 Window" => vec![
+            BrickDesc::new("PB_DefaultMicroBrick").size((5, 5, 2)).offset((0, 0, -10)),
+            BrickDesc::new("PB_DefaultMicroBrick").size((5, 5, 1)).offset((0, 0, 11)),
+            BrickDesc::new("PB_DefaultMicroBrick").size((1, 5, 9)).offset((0, 4, 1)),
+            BrickDesc::new("PB_DefaultMicroBrick").size((1, 5, 9)).offset((0, -4, 1)),
+            BrickDesc::new("PB_DefaultMicroBrick").size((3, 1, 9)).offset((-4, 0, 1)).color_override(WINDOW_COLOR.clone()),
+        ],
+        "1x1x3 Window" => vec![
+            BrickDesc::new("PB_DefaultMicroBrick").size((5, 5, 2)).offset((0, 0, -16)),
+            BrickDesc::new("PB_DefaultMicroBrick").size((5, 5, 1)).offset((0, 0, 17)),
+            BrickDesc::new("PB_DefaultMicroBrick").size((1, 5, 15)).offset((0, 4, 1)),
+            BrickDesc::new("PB_DefaultMicroBrick").size((1, 5, 15)).offset((0, -4, 1)),
+            BrickDesc::new("PB_DefaultMicroBrick").size((3, 1, 15)).offset((-4, 0, 1)).color_override(WINDOW_COLOR.clone()),
+        ],
+        "1x2x1 Window" => vec![
+            BrickDesc::new("PB_DefaultMicroBrick").size((10, 5, 2)).offset((0, 0, -4)),
+            BrickDesc::new("PB_DefaultMicroBrick").size((10, 5, 1)).offset((0, 0, 5)),
+            BrickDesc::new("PB_DefaultMicroBrick").size((1, 5, 3)).offset((0, 9, 1)),
+            BrickDesc::new("PB_DefaultMicroBrick").size((1, 5, 3)).offset((0, -9, 1)),
+            BrickDesc::new("PB_DefaultMicroBrick").size((8, 1, 3)).offset((-4, 0, 1)).color_override(WINDOW_COLOR.clone()),
         ],
         "1x2x2 Window" => vec![
             BrickDesc::new("PB_DefaultMicroBrick").size((10, 5, 2)).offset((0, 0, -10)),
             BrickDesc::new("PB_DefaultMicroBrick").size((10, 5, 1)).offset((0, 0, 11)),
-            BrickDesc::new("PB_DefaultMicroBrick").size((1, 5, 6)).offset((0, 9, 1)),
-            BrickDesc::new("PB_DefaultMicroBrick").size((1, 5, 6)).offset((0, -9, 1)),
+            BrickDesc::new("PB_DefaultMicroBrick").size((1, 5, 9)).offset((0, 9, 1)),
+            BrickDesc::new("PB_DefaultMicroBrick").size((1, 5, 9)).offset((0, -9, 1)),
+            BrickDesc::new("PB_DefaultMicroBrick").size((8, 1, 9)).offset((-4, 0, 1)).color_override(WINDOW_COLOR.clone()),
+        ],
+        "1x2x3 Window" => vec![
+            BrickDesc::new("PB_DefaultMicroBrick").size((10, 5, 2)).offset((0, 0, -16)),
+            BrickDesc::new("PB_DefaultMicroBrick").size((10, 5, 1)).offset((0, 0, 17)),
+            BrickDesc::new("PB_DefaultMicroBrick").size((1, 5, 15)).offset((0, 9, 1)),
+            BrickDesc::new("PB_DefaultMicroBrick").size((1, 5, 15)).offset((0, -9, 1)),
+            BrickDesc::new("PB_DefaultMicroBrick").size((8, 1, 15)).offset((-4, 0, 1)).color_override(WINDOW_COLOR.clone()),
+        ],
+        "1x3x2 Window" => vec![
+            BrickDesc::new("PB_DefaultMicroBrick").size((15, 5, 2)).offset((0, 0, -10)),
+            BrickDesc::new("PB_DefaultMicroBrick").size((15, 5, 1)).offset((0, 0, 11)),
+            BrickDesc::new("PB_DefaultMicroBrick").size((1, 5, 9)).offset((0, 14, 1)),
+            BrickDesc::new("PB_DefaultMicroBrick").size((1, 5, 9)).offset((0, -14, 1)),
+            BrickDesc::new("PB_DefaultMicroBrick").size((13, 1, 9)).offset((-4, 0, 1)).color_override(WINDOW_COLOR.clone()),
+        ],
+        "1x3x3 Window" => vec![
+            BrickDesc::new("PB_DefaultMicroBrick").size((15, 5, 2)).offset((0, 0, -16)),
+            BrickDesc::new("PB_DefaultMicroBrick").size((15, 5, 1)).offset((0, 0, 17)),
+            BrickDesc::new("PB_DefaultMicroBrick").size((1, 5, 15)).offset((0, 14, 1)),
+            BrickDesc::new("PB_DefaultMicroBrick").size((1, 5, 15)).offset((0, -14, 1)),
+            BrickDesc::new("PB_DefaultMicroBrick").size((13, 1, 15)).offset((-4, 0, 1)).color_override(WINDOW_COLOR.clone()),
+        ],
+        "1x4x2 Window" => vec![
+            BrickDesc::new("PB_DefaultMicroBrick").size((20, 5, 2)).offset((0, 0, -10)),
+            BrickDesc::new("PB_DefaultMicroBrick").size((20, 5, 1)).offset((0, 0, 11)),
+            BrickDesc::new("PB_DefaultMicroBrick").size((1, 5, 9)).offset((0, 19, 1)),
+            BrickDesc::new("PB_DefaultMicroBrick").size((1, 5, 9)).offset((0, -19, 1)),
+            BrickDesc::new("PB_DefaultMicroBrick").size((18, 1, 9)).offset((-4, 0, 1)).color_override(WINDOW_COLOR.clone()),
+        ],
+        "1x4x3 Window" => vec![
+            BrickDesc::new("PB_DefaultMicroBrick").size((20, 5, 2)).offset((0, 0, -16)),
+            BrickDesc::new("PB_DefaultMicroBrick").size((20, 5, 1)).offset((0, 0, 17)),
+            BrickDesc::new("PB_DefaultMicroBrick").size((1, 5, 15)).offset((0, 19, 1)),
+            BrickDesc::new("PB_DefaultMicroBrick").size((1, 5, 15)).offset((0, -19, 1)),
+            BrickDesc::new("PB_DefaultMicroBrick").size((18, 1, 15)).offset((-4, 0, 1)).color_override(WINDOW_COLOR.clone()),
         ],
 
         //==================================================================================
