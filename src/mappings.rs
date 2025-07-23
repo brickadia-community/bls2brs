@@ -678,7 +678,10 @@ lazy_static! {
             BrickDesc::new("PB_DefaultMicroWedge").size((15, 1, 15)).offset((0, 10, 1)).microwedge_rotate(true),
             BrickDesc::new("PB_DefaultMicroBrick").size((10, 5, 1)).offset((0, -15, 17)),
         ],
-        // Brick_VerticalPlatePack
+
+        //==================================================================================
+        // Brick_VerticalPlatePack by Emil (Vertical Print Plates!)
+        //==================================================================================
         "1F 1x1F Vertical Print" => BrickDesc::new("PB_DefaultMicroBrick").size((2, 2, 2)).offset((3, 3, 0)),
         "1x 1x1F Vertical Edge Print" => BrickDesc::new("PB_DefaultMicroBrick").size((2, 2, 6)).offset((3, 3, 0)),
         "1x1F Vertical Edge Print" => BrickDesc::new("PB_DefaultMicroBrick").size((2, 2, 10)).offset((3, 3, 0)),
@@ -701,7 +704,10 @@ lazy_static! {
         "1x2F Vertical Print" => BrickDesc::new("PB_DefaultMicroBrick").size((5, 2, 10)).offset((3, 0, 0)),
         "2x2F Vertical Print" => BrickDesc::new("PB_DefaultMicroBrick").size((10, 2, 10)).offset((3, 0, 0)),
         "2x2F Vertical Double Print" => BrickDesc::new("PB_DefaultMicroBrick").size((10, 2, 10)).offset((3, 0, 0)),
-        // Brick_MoreRounds
+
+        //==================================================================================
+        // Brick_MoreRounds by siba, Tophius and Krystal (A couple of taller 1x1 round pieces.)
+        //==================================================================================
         "1x1x2 Round" => vec![
             BrickDesc::new("PB_DefaultPole").size((4, 4, 1)).offset((0, 0, -11)),
             BrickDesc::new("PB_DefaultPole").size((5, 5, 11)).offset((0, 0, 1)),
@@ -710,7 +716,10 @@ lazy_static! {
             BrickDesc::new("PB_DefaultPole").size((4, 4, 1)).offset((0, 0, -17)),
             BrickDesc::new("PB_DefaultPole").size((5, 5, 17)).offset((0, 0, 1)),
         ],
-        // Brick_BlockPoles
+
+        //==================================================================================
+        // Brick_BlockPoles by LeetZero
+        //==================================================================================
         "Block Pole 1x1F" => BrickDesc::new("PB_DefaultMicroBrick").size((2, 2, 2)),
         "Block Pole 1x1" => BrickDesc::new("PB_DefaultMicroBrick").size((2, 2, 6)),
         "Block Pole Horiz" => BrickDesc::new("PB_DefaultMicroBrick").size((5, 2, 2)),
@@ -729,7 +738,10 @@ lazy_static! {
             BrickDesc::new("PB_DefaultMicroBrick").size((2, 1, 2)).offset((4, 0, 0)),
             BrickDesc::new("PB_DefaultMicroWedge").size((1, 2, 2)).offset((1, 0, 0)).rotation_offset(1),
         ],
-        // Brick_TilePlates
+
+        //=================================================================================================
+        // Brick_TilePlates by Emil & RallyBlock (Original pack created by Emil, remastered by RallyBlock)
+        //=================================================================================================
         "1x1F Corner Tile" => vec![
             BrickDesc::new("PB_DefaultSmoothTile").size((10, 5, 2)).offset((5, 0, 0)),
             BrickDesc::new("PB_DefaultSmoothTile").size((5, 5, 2)).offset((-5, -5, 0)),
@@ -759,9 +771,9 @@ lazy_static! {
         "4x4f_PrintPlate" => BrickDesc::new("PB_DefaultSmoothTile").size((20, 20, 2)),
         "4x4f_PrintPlateC" => BrickDesc::new("PB_DefaultMicroBrick").size((20, 20, 2)),
 
-        //==================================================================================
+        //==================================================================================================================
         // Brick_PrintPlatesCeiling by Demian, Space Guy and Killer_Whale (Ceiling prints plates that you can build under.)
-        //==================================================================================
+        //==================================================================================================================
         "1x1F Ceiling Print Plate" => BrickDesc::new("PB_DefaultMicroBrick").size((5, 5, 2)),
         "1x2F Ceiling Print Plate" => BrickDesc::new("PB_DefaultMicroBrick").size((10, 5, 2)),
         "2x2F Ceiling Print Plate" => BrickDesc::new("PB_DefaultMicroBrick").size((10, 10, 2)),
@@ -817,7 +829,9 @@ lazy_static! {
             BrickDesc::new("PB_DefaultMicroWedge").size((10, 5, 30)).offset((0, 5, 0)).rotation_offset(0),
         ],
 
-        // Brick_Wedge
+        //==================================================================================
+        // Brick_Wedge by Tophius (A whole new brick category!)
+        //==================================================================================
         "3x3F Wedge" => vec![
             BrickDesc::new("PB_DefaultSideWedge").size((15, 15, 2)).rotation_offset(3),
             BrickDesc::new("PB_DefaultSideWedge").size((5, 5, 2)).rotation_offset(1).offset((10, 10, 0)),
@@ -852,6 +866,7 @@ lazy_static! {
             BrickDesc::new("PB_DefaultSideWedgeTile").size((5, 5, 2)).rotation_offset(3).offset((5, -5, 0)),
             BrickDesc::new("PB_DefaultSideWedgeTile").size((5, 5, 2)).rotation_offset(3).offset((-5, -15, 0)),
         ],
+
         // Brick_WedgePlus
         "1x1 Wedge" => BrickDesc::new("PB_DefaultSideWedge").size((5, 5, 6)).rotation_offset(0),
         "1x1 Wedge Print" => BrickDesc::new("PB_DefaultSideWedge").size((5, 5, 6)).rotation_offset(0),
@@ -985,6 +1000,7 @@ lazy_static! {
         "0.75x0.75F" => BrickDesc::new("PB_DefaultMicroBrick").size((4, 4, 2)).offset((1, 1, 0)),
         "0.75x0.75F Centered" => BrickDesc::new("PB_DefaultMicroBrick").size((4, 4, 2)),
         "0.75x1F" => BrickDesc::new("PB_DefaultMicroBrick").size((5, 4, 2)).offset((1, 0, 0)),
+        "0.75x1F Centered" => BrickDesc::new("PB_DefaultMicroBrick").size((5, 4, 2)),
         "0.75x2F" => BrickDesc::new("PB_DefaultMicroBrick").size((10, 4, 2)).offset((1, 0, 0)),
         "0.75x2F No Overlap" => BrickDesc::new("PB_DefaultMicroBrick").size((10, 4, 2)).offset((1, 0, 0)).non_priority(true),
         "0.75x1" => BrickDesc::new("PB_DefaultMicroBrick").size((5, 4, 6)).offset((1, 0, 0)),
@@ -995,7 +1011,7 @@ lazy_static! {
         "0.5x0.5F Centered" => BrickDesc::new("PB_DefaultMicroBrick").size((2, 2, 2)),
         "0.5x0.5F No Overlap" => BrickDesc::new("PB_DefaultMicroBrick").size((2, 2, 2)).offset((3, 3, 0)).non_priority(true),
         "0.5x1F" => BrickDesc::new("PB_DefaultMicroBrick").size((5, 2, 2)).offset((3, 0, 0)),
-        "0.5x1F Centered" => BrickDesc::new("PB_DefaultMicroBrick").size((5, 2, 2)),
+        "0.50x1F Centered" => BrickDesc::new("PB_DefaultMicroBrick").size((5, 2, 2)),
         "0.5x1F No Overlap" => BrickDesc::new("PB_DefaultMicroBrick").size((5, 2, 2)).offset((3, 0, 0)).non_priority(true),
         "0.5x2F" => BrickDesc::new("PB_DefaultMicroBrick").size((10, 2, 2)).offset((3, 0, 0)),
         "0.5x2F No Overlap" => BrickDesc::new("PB_DefaultMicroBrick").size((10, 2, 2)).offset((3, 0, 0)).non_priority(true),
@@ -1057,16 +1073,7 @@ lazy_static! {
         "2x1 Topless Ramp x1" => BrickDesc::new("PB_DefaultMicroWedge").size((10, 5, 6)).microwedge_rotate(true).rotation_offset(3),
         "1x2 Topless Ramp x1 Inverted" => BrickDesc::new("PB_DefaultMicroWedge").size((5, 5, 12)).microwedge_rotate(true).rotation_offset(1).inverted_wedge_rotate(true).inverted_modter_rotate(true),
         "1x2 Topless Ramp x1" => BrickDesc::new("PB_DefaultMicroWedge").size((5, 5, 12)).microwedge_rotate(true).rotation_offset(3),
-        // Glass Pane
-        "2x2F Glass Pane" => BrickDesc::new("PB_DefaultMicroBrick").size((10, 10, 1)),
-        "1x1 Glass Pane" => BrickDesc::new("PB_DefaultMicroBrick").size((1, 5, 6)),
-        "1x2 Glass Pane" => BrickDesc::new("PB_DefaultMicroBrick").size((1, 10, 6)),
-        "1x3 Glass Pane" => BrickDesc::new("PB_DefaultMicroBrick").size((1, 15, 6)),
-        "3x4 Glass Pane" => BrickDesc::new("PB_DefaultMicroBrick").size((1, 20, 18)),
-        "5x2 Glass Pane" => BrickDesc::new("PB_DefaultMicroBrick").size((1, 10, 30)),
-        "5x4 Glass Pane" => BrickDesc::new("PB_DefaultMicroBrick").size((1, 20, 30)),
-        "5x6 Glass Pane" => BrickDesc::new("PB_DefaultMicroBrick").size((1, 30, 30)),
-        "5x12 Glass Pane" => BrickDesc::new("PB_DefaultMicroBrick").size((1, 60, 30)),
+
         // Optimized Cubes
         "2x Cube 4x V" => BrickDesc::new("PB_DefaultMicroBrick").size((10, 10, 40)),
         "4x Cube 4h" => BrickDesc::new("PB_DefaultBrick").size((80, 80, 20)),
@@ -1383,6 +1390,9 @@ lazy_static! {
             Some(vec![BrickDesc::new(asset).size((x, y, z)).rotation_offset(rotation)])
         },
 
+        //==================================================================================
+        // Default Crests
+        //==================================================================================
         r"(?P<angle>25|45)° Crest (?:(?P<end>End)|(?P<corner>Corner)|(?P<length>\d+)x)" => |captures, _| {
             let (z, offset) = match captures.name("angle").unwrap().as_str() {
                 s if s == "25" => (4, -2),
@@ -1405,11 +1415,18 @@ lazy_static! {
                 .offset((0, 0, offset))])
         },
 
+        //==================================================================================
+        // Default Tiles
+        //==================================================================================
         r"^(\d+)x(\d+)F Tile$" => |captures, _| {
             let length: u32 = captures.get(1).unwrap().as_str().parse().ok()?;
             let width: u32 = captures.get(2).unwrap().as_str().parse().ok()?;
             Some(vec![BrickDesc::new("PB_DefaultTile").size((width * 5, length * 5, 2))])
         },
+
+        //==================================================================================
+        // Default Naming Baseplates
+        //==================================================================================
         r"^(\d+)x(\d+) Base$" => |captures, _| {
             let width: u32 = captures.get(1).unwrap().as_str().parse().ok()?;
             let length: u32 = captures.get(2).unwrap().as_str().parse().ok()?;
@@ -1430,6 +1447,11 @@ lazy_static! {
             };
             Some(vec![BrickDesc::new("PB_DefaultBrick").size((size * 5, size * 5, height))])
         },
+
+        //==================================================================================
+        // ModTer Support for Addons:
+        // Brick_ModTer_InvertedPack by [GSF]Ghost (Inverted brick terrain modules)
+        //==================================================================================
         r"^\s?(?P<size>\d+)x (?:(?P<cube>Cube)|(?P<ramp>Ramp)|(?P<cornera>CornerA|CorA)|(?P<cornerb>CornerB|CorB)|(?P<cornerc>CornerC|CorC)|(?P<cornerd>CornerD|CorD)|(?P<wedge>Wedge))(?P<inv2> Inv)?(?:(?P<steep> Steep)|(?P<three_quarters> 3/4h)|(?P<half> 1/2h)|(?P<quarter> 1/4h)| )?(?P<inv> Inv.)?$" => |captures, _| {
             let size: u32 = captures.name("size").unwrap().as_str().parse().ok()?;
             let height = if captures.name("steep").is_some() {
@@ -1575,16 +1597,16 @@ lazy_static! {
             ])
         },
 
-        // Log Bricks Addon
+        //=================================================================================================
+        // Brick_Log by siba and Masterlegodude (A set of 9 rounded bricks simulating the lego log bricks)
+        //=================================================================================================
         r"^1x(\d) Log( Wall)?" => |captures, _| {
             let width: i32 = captures.get(1).unwrap().as_str().parse().ok()?;
             let wall = captures.get(2).is_some();
-
             let width_start = (width - 1) * 5;
             let mut v = vec![];
             for i in 0..width {
                 let x = i * 10 - width_start;
-
                 if wall {
                     for j in 0..6 {
                         let z = j * 10 - 25;
@@ -1596,8 +1618,22 @@ lazy_static! {
                     v.push(BrickDesc::new("B_1x1F_Octo").offset((x, 0, 4)));
                 }
             }
-
             Some(v)
-        }
+        },
+
+        //==================================================================================
+        // Brick_GlassPanes by Emil (Glass Panes, pretty self-explanatory)
+        //==================================================================================
+        r"^(\d+)x(\d+)([Ff])? Glass Pane" => |captures, _| {
+            let height: u32 = captures.get(1).unwrap().as_str().parse().ok()?;
+            let width: u32 = captures.get(2).unwrap().as_str().parse().ok()?;
+            let flat = captures.get(3).is_some();
+            let size = if flat {
+                (width * 5, height * 5, 1)
+            } else {
+                (1, width * 5, height * 6)
+            };
+            Some(vec![BrickDesc::new("PB_DefaultMicroBrick").size(size)])
+        },
     ];
 }
