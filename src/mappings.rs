@@ -1062,18 +1062,6 @@ lazy_static! {
             BrickDesc::new("PB_DefaultMicroBrick").size((1, 4, 6)).offset((1, 4, 0)),
         ],
 
-        // Topless Ramps
-        "1x1 Topless Ramp x1 Inverted" => BrickDesc::new("PB_DefaultMicroWedge").size((5, 5, 6)).microwedge_rotate(true).rotation_offset(1).inverted_wedge_rotate(true).inverted_modter_rotate(true),
-        "1x1 Topless Ramp x1" => BrickDesc::new("PB_DefaultMicroWedge").size((5, 5, 6)).microwedge_rotate(true).rotation_offset(3),
-        "1x1 Topless Ramp x2 Inverted" => BrickDesc::new("PB_DefaultMicroWedge").size((5, 10, 6)).microwedge_rotate(true).rotation_offset(1).inverted_wedge_rotate(true).inverted_modter_rotate(true),
-        "1x1 Topless Ramp x2" => BrickDesc::new("PB_DefaultMicroWedge").size((5, 10, 6)).microwedge_rotate(true).rotation_offset(3),
-        "2x1 Topless Ramp x2 Inverted" => BrickDesc::new("PB_DefaultMicroWedge").size((10, 10, 6)).microwedge_rotate(true).rotation_offset(1).inverted_wedge_rotate(true).inverted_modter_rotate(true),
-        "2x1 Topless Ramp x2" => BrickDesc::new("PB_DefaultMicroWedge").size((10, 10, 6)).microwedge_rotate(true).rotation_offset(3),
-        "2x1 Topless Ramp x1 Inverted" => BrickDesc::new("PB_DefaultMicroWedge").size((10, 5, 6)).microwedge_rotate(true).rotation_offset(1).inverted_wedge_rotate(true).inverted_modter_rotate(true),
-        "2x1 Topless Ramp x1" => BrickDesc::new("PB_DefaultMicroWedge").size((10, 5, 6)).microwedge_rotate(true).rotation_offset(3),
-        "1x2 Topless Ramp x1 Inverted" => BrickDesc::new("PB_DefaultMicroWedge").size((5, 5, 12)).microwedge_rotate(true).rotation_offset(1).inverted_wedge_rotate(true).inverted_modter_rotate(true),
-        "1x2 Topless Ramp x1" => BrickDesc::new("PB_DefaultMicroWedge").size((5, 5, 12)).microwedge_rotate(true).rotation_offset(3),
-
         // Optimized Cubes
         "2x Cube 4x V" => BrickDesc::new("PB_DefaultMicroBrick").size((10, 10, 40)),
         "4x Cube 4h" => BrickDesc::new("PB_DefaultBrick").size((80, 80, 20)),
@@ -1634,6 +1622,24 @@ lazy_static! {
                 (1, width * 5, height * 6)
             };
             Some(vec![BrickDesc::new("PB_DefaultMicroBrick").size(size)])
+        },
+
+        //=====================================================================================
+        // Brick_ToplessRamps by Communist and Titanium Man (A pack of smooth, topless ramps.)
+        //=====================================================================================
+        r"^(\d+)x(\d+) Topless Ramp x(\d+)( Inverted)?" => |captures, _| {
+            let width: u32 = captures.get(1).unwrap().as_str().parse().ok()?;
+            let height: u32 = captures.get(2).unwrap().as_str().parse().ok()?;
+            let length: u32 = captures.get(3).unwrap().as_str().parse().ok()?;
+            let inverted = captures.get(4).is_some();
+            let size = (width * 5, length * 5, height * 6);
+            Some(vec![BrickDesc::new("PB_DefaultMicroWedge")
+                .size(size)
+                .microwedge_rotate(true)
+                .rotation_offset(if inverted {1} else {3})
+                .inverted_wedge_rotate(inverted)
+                .inverted_modter_rotate(inverted)
+            ])
         },
     ];
 }
