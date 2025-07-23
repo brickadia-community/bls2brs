@@ -1146,6 +1146,20 @@ lazy_static! {
         ],
 
         //==================================================================================
+        // Brick_GrillPlate by Polymer (A 2x1 grill plate.)
+        //==================================================================================
+        "Grill Plate" => vec![
+            BrickDesc::new("PB_DefaultMicroBrick").size((10, 1, 2)).offset((-4, 0, 0)),
+            BrickDesc::new("PB_DefaultMicroBrick").size((10, 1, 2)).offset((0, 0, 0)),
+            BrickDesc::new("PB_DefaultMicroBrick").size((10, 1, 2)).offset((4, 0, 0)),
+            BrickDesc::new("PB_DefaultMicroBrick").size((1, 1, 1)).offset((2, 9, -1)),
+            BrickDesc::new("PB_DefaultMicroBrick").size((1, 1, 1)).offset((-2, 9, -1)),
+            BrickDesc::new("PB_DefaultMicroBrick").size((1, 1, 1)).offset((2, -9, -1)),
+            BrickDesc::new("PB_DefaultMicroBrick").size((1, 1, 1)).offset((-2, -9, -1)),
+        ],
+        // TODO: Grill Corner
+
+        //==================================================================================
         // Brick_ExtraRamps by Tophius (An assorment of extra LEGO-inspired ramps)
         //==================================================================================
         "30° Ramp 1x" => vec![
