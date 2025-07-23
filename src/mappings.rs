@@ -903,39 +903,76 @@ lazy_static! {
             BrickDesc::new("PB_DefaultMicroBrick").size((1, 5, 6)).offset((0, 9, 1)),
             BrickDesc::new("PB_DefaultMicroBrick").size((1, 5, 6)).offset((0, -9, 1)),
         ],
-        // Brick_SmallRamps
+
+        //==================================================================================
+        // Brick_SmallRampsPack by Emil (Little, fitting and vertical ramps!)
+        //==================================================================================
+        // TODO: Move to regex capture
         "1x1 Small Ramp" => vec![
-            BrickDesc::new("PB_DefaultMicroBrick").size((5, 5, 2)).offset((0, 0, -2)),
+            BrickDesc::new("PB_DefaultBrick").size((5, 5, 2)).offset((0, 0, -2)),
             BrickDesc::new("PB_DefaultMicroWedge").size((5, 5, 2)).offset((0, 0, 2)).microwedge_rotate(true).rotation_offset(3),
         ],
-        "1x1 Inverted Ramp" => vec![
-            BrickDesc::new("PB_DefaultMicroBrick").size((5, 5, 2)).offset((0, 0, 2)),
-            BrickDesc::new("PB_DefaultMicroWedge").size((5, 5, 2)).offset((0, 0, -2)).microwedge_rotate(true).rotation_offset(1).inverted_wedge_rotate(true).inverted_modter_rotate(true),
-        ],
         "1x2 Small Ramp" => vec![
-            BrickDesc::new("PB_DefaultMicroBrick").size((10, 5, 2)).offset((0, 0, -2)),
+            BrickDesc::new("PB_DefaultBrick").size((10, 5, 2)).offset((0, 0, -2)),
             BrickDesc::new("PB_DefaultMicroWedge").size((10, 5, 2)).offset((0, 0, 2)).microwedge_rotate(true).rotation_offset(3),
         ],
+        "2x1 Small Ramp" => vec![
+            BrickDesc::new("PB_DefaultBrick").size((5, 10, 2)).offset((0, 0, -2)),
+            BrickDesc::new("PB_DefaultMicroWedge").size((5, 10, 2)).offset((0, 0, 2)).microwedge_rotate(true).rotation_offset(3),
+        ],
+        "2x2 Small Ramp" => vec![
+            BrickDesc::new("PB_DefaultBrick").size((10, 10, 2)).offset((0, 0, -2)),
+            BrickDesc::new("PB_DefaultMicroWedge").size((10, 10, 2)).offset((0, 0, 2)).microwedge_rotate(true).rotation_offset(3),
+        ],
+        "1x1 Inverted Ramp" => vec![
+            BrickDesc::new("PB_DefaultBrick").size((5, 5, 2)).offset((0, 0, 2)),
+            BrickDesc::new("PB_DefaultMicroWedge").size((5, 5, 2)).offset((0, 0, -2)).microwedge_rotate(true).rotation_offset(1).inverted_wedge_rotate(true).inverted_modter_rotate(true),
+        ],
         "1x2 Inverted Ramp" => vec![
-            BrickDesc::new("PB_DefaultMicroBrick").size((10, 5, 2)).offset((0, 0, 2)),
+            BrickDesc::new("PB_DefaultBrick").size((10, 5, 2)).offset((0, 0, 2)),
             BrickDesc::new("PB_DefaultMicroWedge").size((10, 5, 2)).offset((0, 0, -2)).microwedge_rotate(true).rotation_offset(1).inverted_wedge_rotate(true).inverted_modter_rotate(true),
         ],
-        "1x2 Vertical BOTTOM Ramp" => vec![
-            BrickDesc::new("PB_DefaultMicroBrick").size((5, 2, 10)).offset((3, 0, 0)),
-            BrickDesc::new("PB_DefaultMicroWedge").size((3, 5, 10)).offset((-2, 0, 0)).microwedge_rotate(true).rotation_offset(2),
+        "2x1 Inverted Ramp" => vec![
+            BrickDesc::new("PB_DefaultBrick").size((5, 10, 2)).offset((0, 0, 2)),
+            BrickDesc::new("PB_DefaultMicroWedge").size((5, 10, 2)).offset((0, 0, -2)).microwedge_rotate(true).rotation_offset(1).inverted_wedge_rotate(true).inverted_modter_rotate(true),
         ],
-        "2x2 Vertical BOTTOM Ramp" => vec![
-            BrickDesc::new("PB_DefaultMicroBrick").size((10, 2, 10)).offset((3, 0, 0)),
-            BrickDesc::new("PB_DefaultMicroWedge").size((3, 10, 10)).offset((-2, 0, 0)).microwedge_rotate(true).rotation_offset(2),
+        "2x2 Inverted Ramp" => vec![
+            BrickDesc::new("PB_DefaultBrick").size((10, 10, 2)).offset((0, 0, 2)),
+            BrickDesc::new("PB_DefaultMicroWedge").size((10, 10, 2)).offset((0, 0, -2)).microwedge_rotate(true).rotation_offset(1).inverted_wedge_rotate(true).inverted_modter_rotate(true),
         ],
         "1x1 Vertical BOTTOM Ramp" => vec![
             BrickDesc::new("PB_DefaultMicroBrick").size((5, 2, 6)).offset((3, 0, 0)),
             BrickDesc::new("PB_DefaultMicroWedge").size((3, 5, 6)).offset((-2, 0, 0)).microwedge_rotate(true).rotation_offset(2),
         ],
+        "1x2 Vertical BOTTOM Ramp" => vec![
+            BrickDesc::new("PB_DefaultMicroBrick").size((5, 2, 10)).offset((3, 0, 0)),
+            BrickDesc::new("PB_DefaultMicroWedge").size((3, 5, 10)).offset((-2, 0, 0)).microwedge_rotate(true).rotation_offset(2),
+        ],
+        "2x1 Vertical BOTTOM Ramp" => vec![
+            BrickDesc::new("PB_DefaultMicroBrick").size((10, 2, 6)).offset((3, 0, 0)),
+            BrickDesc::new("PB_DefaultMicroWedge").size((3, 10, 6)).offset((-2, 0, 0)).microwedge_rotate(true).rotation_offset(2),
+        ],
+        "2x2 Vertical BOTTOM Ramp" => vec![
+            BrickDesc::new("PB_DefaultMicroBrick").size((10, 2, 10)).offset((3, 0, 0)),
+            BrickDesc::new("PB_DefaultMicroWedge").size((3, 10, 10)).offset((-2, 0, 0)).microwedge_rotate(true).rotation_offset(2),
+        ],
         "1x1 Vertical TOP Ramp" => vec![
             BrickDesc::new("PB_DefaultMicroBrick").size((5, 2, 6)).offset((3, 0, 0)),
             BrickDesc::new("PB_DefaultMicroWedge").size((3, 5, 6)).offset((-2, 0, 0)).microwedge_rotate(true).rotation_offset(0).inverted_wedge_rotate(true).inverted_modter_rotate(true),
         ],
+        "1x2 Vertical TOP Ramp" => vec![
+            BrickDesc::new("PB_DefaultMicroBrick").size((5, 2, 10)).offset((3, 0, 0)),
+            BrickDesc::new("PB_DefaultMicroWedge").size((3, 5, 10)).offset((-2, 0, 0)).microwedge_rotate(true).rotation_offset(0).inverted_wedge_rotate(true).inverted_modter_rotate(true),
+        ],
+        "2x1 Vertical TOP Ramp" => vec![
+            BrickDesc::new("PB_DefaultMicroBrick").size((10, 2, 6)).offset((3, 0, 0)),
+            BrickDesc::new("PB_DefaultMicroWedge").size((3, 10, 6)).offset((-2, 0, 0)).microwedge_rotate(true).rotation_offset(0).inverted_wedge_rotate(true).inverted_modter_rotate(true),
+        ],
+        "2x2 Vertical TOP Ramp" => vec![
+            BrickDesc::new("PB_DefaultMicroBrick").size((10, 2, 10)).offset((3, 0, 0)),
+            BrickDesc::new("PB_DefaultMicroWedge").size((3, 10, 10)).offset((-2, 0, 0)).microwedge_rotate(true).rotation_offset(0).inverted_wedge_rotate(true).inverted_modter_rotate(true),
+        ],
+
         // Brick_ExtraArches
         "1x5 Half-Arch" => vec![
             BrickDesc::new("PB_DefaultBrick").size((5, 5, 12)).offset((0, 20, -12)),
@@ -1077,6 +1114,62 @@ lazy_static! {
         // Cube Prints
         "2x Cube Print" => BrickDesc::new("PB_DefaultMicroBrick").size((10, 10, 10)),
         "6x Cube Print" => BrickDesc::new("PB_DefaultMicroBrick").size((30, 30, 30)),
+
+        //==================================================================================
+        // Brick_ExtraRamps by Tophius (An assorment of extra LEGO-inspired ramps)
+        //==================================================================================
+        "30° Ramp 1x" => vec![
+            BrickDesc::new("PB_DefaultMicroBrick").size((5, 5, 1)).offset((0, 0, -3)),
+            BrickDesc::new("PB_DefaultMicroWedge").size((5, 5, 3)).offset((0, 0, 1)).microwedge_rotate(true).rotation_offset(0),
+        ],
+        "10° Ramp 8x" => vec![
+            BrickDesc::new("PB_DefaultBrick").size((40, 25, 2)).offset((5, 0, -2)),
+            BrickDesc::new("PB_DefaultMicroWedge").size((30, 40, 2)).offset((0, 0, 2)).microwedge_rotate(true).rotation_offset(0),
+        ],
+        "45° / 25°  Ramp Cap" => vec![
+            BrickDesc::new("PB_DefaultRampCorner").size((15, 10, 6)).offset((0, 10, 0)).rotation_offset(0),
+            BrickDesc::new("PB_DefaultRampCorner").size((10, 15, 6)).offset((0, -10, 0)).rotation_offset(3),
+        ],
+        "1x6 Curved Ramp" => vec![
+            BrickDesc::new("PB_DefaultBrick").size((5, 10, 6)).offset((-20, 0, 0)),
+            BrickDesc::new("PB_DefaultBrick").size((5, 20, 2)).offset((10, 0, -4)),
+            BrickDesc::new("PB_DefaultMicroBrick").size((5, 14, 2)).offset((4, 0, 0)),
+            BrickDesc::new("PB_DefaultMicroWedge").size((6, 5, 2)).offset((24, 0, 0)).microwedge_rotate(true).rotation_offset(0),
+            BrickDesc::new("PB_DefaultMicroWedge").size((14, 5, 2)).offset((4, 0, 4)).microwedge_rotate(true).rotation_offset(0),
+        ],
+        "2x6 Curved Ramp" => vec![
+            BrickDesc::new("PB_DefaultBrick").size((10, 10, 6)).offset((-20, 0, 0)),
+            BrickDesc::new("PB_DefaultBrick").size((10, 20, 2)).offset((10, 0, -4)),
+            BrickDesc::new("PB_DefaultMicroBrick").size((10, 14, 2)).offset((4, 0, 0)),
+            BrickDesc::new("PB_DefaultMicroWedge").size((6, 10, 2)).offset((24, 0, 0)).microwedge_rotate(true).rotation_offset(0),
+            BrickDesc::new("PB_DefaultMicroWedge").size((14, 10, 2)).offset((4, 0, 4)).microwedge_rotate(true).rotation_offset(0),
+        ],
+        "1x6 Curved Inverted" => vec![
+            BrickDesc::new("PB_DefaultBrick").size((5, 10, 6)).offset((-20, 0, 0)),
+            BrickDesc::new("PB_DefaultBrick").size((5, 20, 2)).offset((10, 0, 4)),
+            BrickDesc::new("PB_DefaultMicroBrick").size((5, 14, 2)).offset((4, 0, 0)),
+            BrickDesc::new("PB_DefaultMicroWedge").size((6, 5, 2)).offset((24, 0, 0)).microwedge_rotate(true).rotation_offset(2).inverted_wedge_rotate(true).inverted_modter_rotate(true),
+            BrickDesc::new("PB_DefaultMicroWedge").size((14, 5, 2)).offset((4, 0, -4)).microwedge_rotate(true).rotation_offset(2).inverted_wedge_rotate(true).inverted_modter_rotate(true),
+        ],
+        "2x6 Curved Inverted" => vec![
+            BrickDesc::new("PB_DefaultBrick").size((10, 10, 6)).offset((-20, 0, 0)),
+            BrickDesc::new("PB_DefaultBrick").size((10, 20, 2)).offset((10, 0, 4)),
+            BrickDesc::new("PB_DefaultMicroBrick").size((10, 14, 2)).offset((4, 0, 0)),
+            BrickDesc::new("PB_DefaultMicroWedge").size((6, 10, 2)).offset((24, 0, 0)).microwedge_rotate(true).rotation_offset(2).inverted_wedge_rotate(true).inverted_modter_rotate(true),
+            BrickDesc::new("PB_DefaultMicroWedge").size((14, 10, 2)).offset((4, 0, -4)).microwedge_rotate(true).rotation_offset(2).inverted_wedge_rotate(true).inverted_modter_rotate(true),
+        ],
+        "1x3 Curved Ramp" => vec![
+            BrickDesc::new("PB_DefaultBrick").size((5, 10, 2)).offset((5, 0, -4)),
+            BrickDesc::new("PB_DefaultMicroBrick").size((5, 5, 3)).offset((-10, 0, 1)),
+            BrickDesc::new("PB_DefaultMicroWedge").size((10, 5, 3)).offset((5, 0, 1)).microwedge_rotate(true).rotation_offset(0),
+            BrickDesc::new("PB_DefaultMicroWedge").size((5, 5, 1)).offset((-10, 0, 5)).microwedge_rotate(true).rotation_offset(0),
+        ],
+        "2x4 Curved Ramp" => vec![
+            BrickDesc::new("PB_DefaultBrick").size((20, 10, 2)).offset((0, 0, -2)),
+            BrickDesc::new("PB_DefaultMicroBrick").size((20, 6, 1)).offset((-4, 0, 1)),
+            BrickDesc::new("PB_DefaultMicroWedge").size((4, 20, 1)).offset((6, 0, 1)).microwedge_rotate(true).rotation_offset(0),
+            BrickDesc::new("PB_DefaultMicroWedge").size((6, 20, 1)).offset((-4, 0, 3)).microwedge_rotate(true).rotation_offset(0),
+        ],
 
         //==================================================================================
         // Brick_BarnaWindows by Barnabas (Old fashioned windows)
