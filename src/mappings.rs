@@ -1116,6 +1116,36 @@ lazy_static! {
         "6x Cube Print" => BrickDesc::new("PB_DefaultMicroBrick").size((30, 30, 30)),
 
         //==================================================================================
+        // Brick_Slanted by siba and Masterlegodude (6 slanted bricks)
+        //==================================================================================
+        "1x1 C Slanted" => vec![
+            BrickDesc::new("PB_DefaultMicroBrick").size((4, 4, 6)).offset((1, 1, 0)),
+            BrickDesc::new("PB_DefaultMicroWedge").size((1, 4, 6)).offset((1, -4, 0)).rotation_offset(3).microwedge_rotate(true),
+            BrickDesc::new("PB_DefaultMicroWedge").size((1, 4, 6)).offset((-4, 1, 0)).rotation_offset(2).microwedge_rotate(true),
+            BrickDesc::new("PB_DefaultMicroWedgeCorner").size((1, 1, 6)).offset((-4, -4, 0)).rotation_offset(2),
+        ],
+        "1x1 Slanted" => vec![
+            BrickDesc::new("PB_DefaultMicroBrick").size((4, 5, 6)).offset((0, 1, 0)),
+            BrickDesc::new("PB_DefaultMicroWedge").size((1, 5, 6)).offset((0, -4, 0)).rotation_offset(3).microwedge_rotate(true),
+        ],
+        "1x2 Slanted" => vec![
+            BrickDesc::new("PB_DefaultMicroBrick").size((4, 10, 6)).offset((0, 1, 0)),
+            BrickDesc::new("PB_DefaultMicroWedge").size((1, 10, 6)).offset((0, -4, 0)).rotation_offset(3).microwedge_rotate(true),
+        ],
+        "1x4 Slanted" => vec![
+            BrickDesc::new("PB_DefaultMicroBrick").size((4, 20, 6)).offset((0, 1, 0)),
+            BrickDesc::new("PB_DefaultMicroWedge").size((1, 20, 6)).offset((0, -4, 0)).rotation_offset(3).microwedge_rotate(true),
+        ],
+        "1x6 Slanted" => vec![
+            BrickDesc::new("PB_DefaultMicroBrick").size((4, 30, 6)).offset((0, 1, 0)),
+            BrickDesc::new("PB_DefaultMicroWedge").size((1, 30, 6)).offset((0, -4, 0)).rotation_offset(3).microwedge_rotate(true),
+        ],
+        "1x8 Slanted" => vec![
+            BrickDesc::new("PB_DefaultMicroBrick").size((4, 40, 6)).offset((0, 1, 0)),
+            BrickDesc::new("PB_DefaultMicroWedge").size((1, 40, 6)).offset((0, -4, 0)).rotation_offset(3).microwedge_rotate(true),
+        ],
+
+        //==================================================================================
         // Brick_ExtraRamps by Tophius (An assorment of extra LEGO-inspired ramps)
         //==================================================================================
         "30° Ramp 1x" => vec![
