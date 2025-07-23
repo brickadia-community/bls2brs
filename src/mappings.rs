@@ -1778,5 +1778,14 @@ lazy_static! {
                 .inverted_modter_rotate(inverted)
             ])
         },
+
+        //==================================================================================
+        // Brick_HorizPoles by siba and Masterlegodude (Horizontal pole bricks)
+        //==================================================================================
+        r"^1x(\d+)f Horizontal pole" => |captures, _| {
+            let length: u32 = captures.get(1).unwrap().as_str().parse().ok()?;
+            let size = (2, 2, 5 * length);
+            Some(vec![BrickDesc::new("PB_DefaultPole").size(size).rotate_by_direction()])
+        },
     ];
 }
