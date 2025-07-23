@@ -96,20 +96,7 @@ lazy_static! {
         ],
         "2x2x1 Octo Cone" => BrickDesc::new("B_2x2_Round"),
         "Gravestone" => BrickDesc::new("B_Gravestone"),
-        "Skull" => vec![
-            BrickDesc::new("PB_DefaultMicroBrick").size((5, 4, 3)).offset((1, 0, 3)),
-            BrickDesc::new("PB_DefaultMicroBrick").size((5, 1, 2)).offset((-4, 0, 4)),
-            BrickDesc::new("PB_DefaultMicroBrick").size((1, 1, 1)).offset((-4, 4, 1)),
-            BrickDesc::new("PB_DefaultMicroBrick").size((1, 1, 1)).offset((-4, 0, 1)),
-            BrickDesc::new("PB_DefaultMicroBrick").size((1, 1, 1)).offset((-4, -4, 1)),
-            BrickDesc::new("PB_DefaultMicroBrick").size((1, 1, 1)).offset((-4, -2, 1))
-                .color_override(brs::Color::from_rgba(0, 0, 0, 255)),
-            BrickDesc::new("PB_DefaultMicroBrick").size((1, 1, 1)).offset((-4, 2, 1))
-                .color_override(brs::Color::from_rgba(0, 0, 0, 255)),
-            BrickDesc::new("PB_DefaultMicroBrick").size((3, 4, 1)).offset((-1, 0, -3)),
-            BrickDesc::new("PB_DefaultMicroBrick").size((2, 4, 1)).offset((-1, 0, -1)),
-            BrickDesc::new("PB_DefaultMicroBrick").size((3, 1, 2)).offset((4, 0, -2)),
-        ],
+        "Pumpkin" => BrickDesc::new("B_Pumpkin").offset((0, 0, -3)),
         "House Door" => GENERIC_DOOR.clone(),
         "Plain Door" => GENERIC_DOOR.clone(),
         "1x1 Bamboo" => BrickDesc::new("B_1x1_Round").offset((-10, -10, 0)),
@@ -897,15 +884,36 @@ lazy_static! {
             BrickDesc::new("PB_DefaultBrick").size((5, 40, 2)).offset((0, 35, 0)),
             BrickDesc::new("PB_DefaultBrick").size((35, 5, 2)).offset((-35, -5, 0)),
         ],
-        // Brick_Pole
+
+        //==================================================================================
+        // Brick_Pole by Tophius (As requested by Squideey)
+        //==================================================================================
         "1x1F Pole" => BrickDesc::new("PB_DefaultPole").size((2, 2, 2)),
         "1x1 Pole" => BrickDesc::new("PB_DefaultPole").size((2, 2, 6)),
         "1x1x3 Pole" => BrickDesc::new("PB_DefaultPole").size((2, 2, 18)),
-        // Brick_ThickPoles
+
+        //==================================================================================
+        // Brick_ThickPoles by Pass (Kinky...)
+        //==================================================================================
         "1x1f Thick Pole" => BrickDesc::new("PB_DefaultPole").size((4, 4, 2)),
         "1x1 Thick Pole" => BrickDesc::new("PB_DefaultPole").size((4, 4, 6)),
-        "1x2 Thick Pole" => BrickDesc::new("PB_DefaultPole").size((4, 4, 18)),
         "1x3 Thick Pole" => BrickDesc::new("PB_DefaultPole").size((4, 4, 18)),
+
+        //==================================================================================
+        // Brick_ThickPolesPlus by Trinko (A complete revamp of Thick Poles, complete with adapters!)
+        //==================================================================================
+        "1x2 Thick Pole" => BrickDesc::new("PB_DefaultPole").size((4, 4, 12)),
+        "1x1 Vert Thick Pole" => BrickDesc::new("PB_DefaultPole").size((4, 4, 5)).rotate_by_direction().rotation_offset(0),
+        "1x2 Vert Thick Pole" => BrickDesc::new("PB_DefaultPole").size((4, 4, 10)).rotate_by_direction().rotation_offset(0),
+        "1x3 Vert Thick Pole" => BrickDesc::new("PB_DefaultPole").size((4, 4, 15)).rotate_by_direction().rotation_offset(0),
+
+        //==================================================================================
+        // Brick_ModTer_siba by siba, Masterlegodude
+        //==================================================================================
+        "2x Slant+ " => BrickDesc::new("PB_DefaultMicroWedgeTriangleCorner").size((10, 10, 10)).rotation_offset(3),
+        "2x Slant+ Inv " => BrickDesc::new("PB_DefaultMicroWedgeOuterCorner").size((10, 10, 10)).rotation_offset(3),
+        "4x Slant+ 1/2h" => BrickDesc::new("PB_DefaultMicroWedgeTriangleCorner").size((20, 20, 10)).rotation_offset(3),
+        "4x Slant+ Inv 1/2h" => BrickDesc::new("PB_DefaultMicroWedgeOuterCorner").size((20, 20, 10)).rotation_offset(3),
 
         //==================================================================================
         // Brick_Window by Tophius (Fourteen new window bricks!)
@@ -1863,6 +1871,26 @@ lazy_static! {
             let length: u32 = captures.get(1).unwrap().as_str().parse().ok()?;
             let size = (2, 2, 5 * length);
             Some(vec![BrickDesc::new("PB_DefaultPole").size(size).rotate_by_direction()])
+        },
+
+        //==================================================================================
+        // Default Skull Variations
+        //==================================================================================
+        r"^Skull.*" => |_, _| {
+            Some(vec![
+                BrickDesc::new("PB_DefaultMicroBrick").size((5, 4, 3)).offset((1, 0, 3)),
+                BrickDesc::new("PB_DefaultMicroBrick").size((5, 1, 2)).offset((-4, 0, 4)),
+                BrickDesc::new("PB_DefaultMicroBrick").size((1, 1, 1)).offset((-4, 4, 1)),
+                BrickDesc::new("PB_DefaultMicroBrick").size((1, 1, 1)).offset((-4, 0, 1)),
+                BrickDesc::new("PB_DefaultMicroBrick").size((1, 1, 1)).offset((-4, -4, 1)),
+                BrickDesc::new("PB_DefaultMicroBrick").size((1, 1, 1)).offset((-4, -2, 1))
+                    .color_override(brs::Color::from_rgba(0, 0, 0, 255)),
+                BrickDesc::new("PB_DefaultMicroBrick").size((1, 1, 1)).offset((-4, 2, 1))
+                    .color_override(brs::Color::from_rgba(0, 0, 0, 255)),
+                BrickDesc::new("PB_DefaultMicroBrick").size((3, 4, 1)).offset((-1, 0, -3)),
+                BrickDesc::new("PB_DefaultMicroBrick").size((2, 4, 1)).offset((-1, 0, -1)),
+                BrickDesc::new("PB_DefaultMicroBrick").size((3, 1, 2)).offset((4, 0, -2)),
+            ])
         },
     ];
 }
