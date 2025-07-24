@@ -30,10 +30,10 @@ lazy_static! {
         BrickDesc::new("PB_DefaultMicroBrick").size((1, 5, 34)).offset((0, 19, 0)),
         BrickDesc::new("PB_DefaultMicroBrick").size((1, 5, 34)).offset((0, -19, 0)),
         //door
-        BrickDesc::new("PB_DefaultMicroBrick").size((18, 1, 34)),
+        BrickDesc::new("PB_DefaultMicroBrick").size((18, 1, 34)).nocollide(),
         //handle
-        BrickDesc::new("PB_DefaultMicroBrick").size((3, 1, 3)).offset((2, 12, 0)),
-        BrickDesc::new("PB_DefaultMicroBrick").size((3, 1, 3)).offset((-2, 12, 0)),
+        BrickDesc::new("PB_DefaultMicroBrick").size((3, 1, 3)).offset((2, 12, 0)).nocollide(),
+        BrickDesc::new("PB_DefaultMicroBrick").size((3, 1, 3)).offset((-2, 12, 0)).nocollide(),
     ];
     static ref PRINT_4X4F_ROUND: BrickMapping = vec![
         BrickDesc::new("PB_DefaultMicroBrick").size((18, 10, 2)),
